@@ -2,6 +2,8 @@
 
 # Ruby gems
 
+require "cocaine"
+
 # Application code
 
 require "mugatu/version"
