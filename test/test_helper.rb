@@ -39,4 +39,26 @@ class TestCase < Minitest::Test
   def sandbox_clean
     FileUtils.rm_rf(sandbox_path)
   end
+
+  def touch(path, contents = nil)
+    absolute = File.expand_path(path, sandbox_path)
+
+    if within_directory?(file: absolute, dir: sandbox_path)
+      File.write(absolute, contents || "")
+    else
+      STDERR.puts("attempted to write #{absolute} outside of the sandbox")
+    end
+  end
+
+  def within_directory?(file:, dir:)
+    filepath = Pathname.new(file)
+    dirpath  = Pathname.new(dir)
+
+    assert filepath.absolute?, "filepath should be absolute"
+    assert dirpath.absolute?, "dirpath should be absolute"
+
+    relpath = filepath.relative_path_from(dirpath)
+
+    relpath.to_s.slice(0, 2) != ".."
+  end
 end
