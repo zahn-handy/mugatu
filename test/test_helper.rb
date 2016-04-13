@@ -51,7 +51,7 @@ class TestCase < Minitest::Test
 
   def git_log
     Dir.chdir(sandbox_path) do
-      $stderr.puts Cocaine::CommandLine.new("git", "log -p").run
+      $stderr.puts Cocaine::CommandLine.new("git", "log --patch --reverse").run
     end
   end
 
