@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class MugatuTest < Minitest::Test
+class MugatuTest < TestCase
   def test_that_it_has_a_version_number
     refute_nil ::Mugatu::VERSION
   end
