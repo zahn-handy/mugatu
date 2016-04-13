@@ -4,7 +4,7 @@ module Mugatu
       @root = root
     end
 
-    def all
+    def files
       Dir.chdir(@root) do
         ls_files
           .run
