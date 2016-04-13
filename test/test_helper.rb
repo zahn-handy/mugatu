@@ -55,6 +55,27 @@ class TestCase < Minitest::Test
     end
   end
 
+  def sandbox_setup
+    git_init
+
+    touch "new_staged.rb", %(puts "new"\n)
+    touch "edit_staged.rb", %(puts "edit me"\n)
+    touch "delete_staged.rb", %(puts "delete me"\n)
+    touch "edit_unstaged.rb", %(puts "edit me too"\n)
+    touch "delete_unstaged.rb", %(puts "delete me"\n)
+
+    git_commit_all "initial commit"
+
+    rm "delete_staged.rb"
+    touch "edit_staged.rb", %(puts "edited"\n)
+
+    git_commit_all
+
+    touch "new_unstaged.rb"
+    touch "edit_unstaged.rb", %(puts "unstaged edit"\n)
+    rm "delete_unstaged.rb"
+  end
+
   def sandbox_clean
     if within_directory?(file: sandbox_path, dir: sandboxes_path)
       FileUtils.rm_rf(sandbox_path)
