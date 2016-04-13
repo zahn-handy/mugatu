@@ -36,8 +36,31 @@ class TestCase < Minitest::Test
     end
   end
 
+  def git_commit_all(msg = "test")
+    Dir.chdir(sandbox_path) do
+      Cocaine::CommandLine.new("git", "add .").run
+      Cocaine::CommandLine.new("git", "commit -m :message").run(message: msg)
+    end
+  end
+
+  def git_status
+    Dir.chdir(sandbox_path) do
+      $stderr.puts Cocaine::CommandLine.new("git", "status").run
+    end
+  end
+
+  def git_log
+    Dir.chdir(sandbox_path) do
+      $stderr.puts Cocaine::CommandLine.new("git", "log -p").run
+    end
+  end
+
   def sandbox_clean
-    FileUtils.rm_rf(sandbox_path)
+    if within_directory?(file: sandbox_path, dir: sandboxes_path)
+      FileUtils.rm_rf(sandbox_path)
+    else
+      $stderr.puts "attempted to delete `#{sandbox_path}` outside of sandboxes path"
+    end
   end
 
   def touch(path, contents = nil)
@@ -46,7 +69,17 @@ class TestCase < Minitest::Test
     if within_directory?(file: absolute, dir: sandbox_path)
       File.write(absolute, contents || "")
     else
-      STDERR.puts("attempted to write #{absolute} outside of the sandbox")
+      $stderr.puts "attempted to write `#{absolute}` outside of the sandbox"
+    end
+  end
+
+  def rm(path)
+    absolute = File.expand_path(path, sandbox_path)
+
+    if within_directory?(file: absolute, dir: sandbox_path)
+      File.delete(absolute)
+    else
+      $stderr.puts "attempted to delete `#{absolute}` outside of the sandbox"
     end
   end
 
