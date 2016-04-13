@@ -87,8 +87,8 @@ class TestCase < Minitest::Test
     filepath = Pathname.new(file)
     dirpath  = Pathname.new(dir)
 
-    assert filepath.absolute?, "filepath should be absolute"
-    assert dirpath.absolute?, "dirpath should be absolute"
+    raise "filepath should be absolute" unless filepath.absolute?
+    raise "dirpath should be absolute" unless dirpath.absolute?
 
     relpath = filepath.relative_path_from(dirpath)
 
