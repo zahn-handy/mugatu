@@ -1,5 +1,7 @@
-require "mugatu/version"
+# Ruby core libraries
 
-module Mugatu
-  # Your code goes here...
-end
+# Ruby gems
+
+# Application code
+
+require "mugatu/version"
