@@ -5,17 +5,33 @@ module Mugatu
     end
 
     def files
+      modified - deleted
+    end
+
+    private
+
+    def deleted
       Dir.chdir(@root) do
-        ls_files
+        ls_files_deleted
           .run
           .split("\n")
       end
     end
 
-    private
+    def modified
+      Dir.chdir(@root) do
+        ls_files_modified
+          .run
+          .split("\n")
+      end
+    end
 
-    def ls_files
+    def ls_files_modified
       Cocaine::CommandLine.new("git", "ls-files --others --modified --exclude-standard")
+    end
+
+    def ls_files_deleted
+      Cocaine::CommandLine.new("git", "ls-files --deleted")
     end
   end
 end
