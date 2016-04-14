@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class SupportTest < TestCase
   test "integration of test helpers" do
@@ -15,11 +15,11 @@ class SupportTest < TestCase
 
     git_commit_all
 
-    out, err = capture_io { git_status }
+    _out, err = capture_io { git_status }
     assert_match %r{nothing to commit, working directory clean}, err
 
-    out, err = capture_io { git_log }
-    assert_match %r{crazy commit message}, err
+    _out, err = capture_io { git_log }
+    assert_match /crazy commit message/, err
 
     sandbox_clean
     refute File.exist?(File.join(sandbox_path))
