@@ -1,0 +1,42 @@
+---
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - "bin/**/*"
+
+Metrics/LineLength:
+  Max: 100
+  Exclude:
+    - "test/**/*"
+
+Metrics/MethodLength:
+  Max: 15
+  Exclude:
+    - "test/**/*"
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/StringLiteralsInInterpolation:
+  Enabled: false
+
+Style/RegexpLiteral:
+  EnforcedStyle: percent_r
+
+Style/UnneededPercentQ:
+  Enabled: false
