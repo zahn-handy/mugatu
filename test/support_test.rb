@@ -24,4 +24,25 @@ class SupportTest < TestCase
     sandbox_clean
     refute File.exist?(File.join(sandbox_path))
   end
+
+  test "#extract accesses __END__" do
+    assert_equal %(puts "hi"\n), extract("section_1")
+    assert_equal %(puts "bye"\n), extract("section_2")
+    assert_equal %(  puts "@@"\n), extract("section_3")
+  end
 end
+
+__END__
+
+@@ section_1
+
+puts "hi"
+
+@@ section_2
+
+puts "bye"
+
+@@ section_3
+
+  puts "@@"
+
