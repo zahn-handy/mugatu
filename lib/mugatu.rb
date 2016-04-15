@@ -1,5 +1,7 @@
 # Ruby core libraries
 
+require "json"
+
 # Ruby gems
 
 require "cocaine"
@@ -8,3 +10,4 @@ require "cocaine"
 
 require "mugatu/changeset"
 require "mugatu/version"
+require "mugatu/rubocop_runner"
