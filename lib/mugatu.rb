@@ -9,5 +9,6 @@ require "cocaine"
 # Application code
 
 require "mugatu/changeset"
+require "mugatu/problem"
 require "mugatu/version"
 require "mugatu/rubocop_runner"
