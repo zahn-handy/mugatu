@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+cd "$(dirname "$0")/.."
+
+[ -z "$DEBUG" ] || set -x
+
+if [[ $# -eq 0 ]]; then
+  bundle exec rake
+elif [[ $# -eq 1 ]]; then
+  bundle exec ruby -Itest $1
+elif [[ $# -eq 2 ]]; then
+  bundle exec ruby -Itest $1 -n $2
+else
+  echo "usage: test <optional_path_to_file> <optional_name_of_test>"
+fi
