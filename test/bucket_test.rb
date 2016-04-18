@@ -3,6 +3,7 @@ require "test_helper"
 class BucketTest < TestCase
   test "#belongs? with base, excludes, and includes" do
     patterns = {
+      name: :eslint,
       base: %w(**/*.js),
       excludes: %w(no.js nope/**/*),
       includes: %w(nope/jk/**/* nope/but_actually_yes.js)
@@ -24,6 +25,7 @@ class BucketTest < TestCase
     skip "#belongs? doesn't work right now, but it's not my priority at the moment"
 
     patterns = {
+      name: :eslint,
       base: %w(**/*.js),
       excludes: %w(no.js nope/**/*),
       includes: %w(nope/jk/**/* nope/but_actually_yes.js)

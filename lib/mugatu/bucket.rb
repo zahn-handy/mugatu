@@ -1,10 +1,13 @@
 module Mugatu
   class Bucket
-    def initialize(base:, excludes:, includes:)
+    def initialize(name:, base:, excludes:, includes:)
+      @name     = name
       @base     = base
       @excludes = excludes
       @includes = includes 
     end
+
+    attr_reader :name
 
     def belongs?(file)
       if match?(@includes, file)
