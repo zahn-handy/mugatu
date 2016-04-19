@@ -1,6 +1,7 @@
 # Ruby core libraries
 
 require "json"
+require "yaml"
 
 # Ruby gems
 
@@ -15,3 +16,5 @@ require "mugatu/rubocop_runner"
 require "mugatu/rubocop_parser"
 require "mugatu/bucket"
 require "mugatu/file_matcher"
+require "mugatu/main"
+require "mugatu/runway"

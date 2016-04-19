@@ -1,0 +1,15 @@
+---
+linters:
+  ruby_linter:
+    linter: rubocop
+    paths:
+      - "**/*.rb"
+    excludes:
+      - "config/**/*"
+    includes:
+      - "config/routes.rb"
+  eslint:
+    linter: eslint
+    paths:
+      - "**/*.js"
+      - "**/*.jsx"

@@ -1,0 +1,18 @@
+---
+# paths:
+#   - "bin"
+linters:
+  - linter: rubocop
+    # executable: "rubocop"
+    paths:
+      - "**/*.rb"
+    exclude:
+      - "vendor/**/*"
+      - "config/**/*"
+    include:
+      - "config/routes.rb"
+  - linter: eslint
+    # executable: "eslint"
+    paths:
+      - "**/*.js"
+      - "**/*.jsx"

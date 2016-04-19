@@ -133,4 +133,9 @@ class TestCase < Minitest::Test
 
     sections[name].sub(/^\n*/, "") + "\n"
   end
+
+  def fixture_path(partial_path)
+    fixtures_path = File.expand_path("fixtures", File.dirname(__FILE__))
+    File.join(fixtures_path, partial_path)
+  end
 end

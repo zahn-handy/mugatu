@@ -22,7 +22,8 @@ module Mugatu
           cmd.run(changed_files_association)
         end
 
-      JSON.parse(output)
+      # parser = RubocopParser.new(output)
+      # parser.call
     end
   end
 end
