@@ -1,0 +1,11 @@
+---
+linters:
+  ruby_linter:
+    linter: rubocop
+    base:
+      - "**/*.rb"
+    excludes:
+      - "test/**/*"
+    includes:
+      - "test/test_helper.rb"
+      - "test/support/**"
