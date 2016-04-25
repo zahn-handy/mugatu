@@ -13,7 +13,6 @@ begin
 rescue LoadError
 end
 
-
 # Application code
 
 require "mugatu/runtime"
