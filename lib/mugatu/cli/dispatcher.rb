@@ -11,6 +11,9 @@ module Mugatu
 
       desc "init PATH", "Create an example .mugatu.yml at PATH"
       def init(path)
+        puts "not yet implemented"
+        puts "example:"
+        puts File.read(File.expand_path("../../../.mugatu.yml", File.dirname(__FILE__)))
       end
 
       desc "version", "Print version"
