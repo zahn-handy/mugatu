@@ -1,4 +1,7 @@
 ---
+git:
+  base:
+    ref: origin/master
 linters:
   ruby_linter:
     linter: rubocop
