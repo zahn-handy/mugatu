@@ -13,9 +13,5 @@ module Mugatu
     def linters
       @registry
     end
-
-    def init
-      Main.new(@root_path, @registry, @config)
-    end
   end
 end
