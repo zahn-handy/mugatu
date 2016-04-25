@@ -10,8 +10,18 @@ module Mugatu
     attr_reader :root_path
     attr_reader :registry, :config_path, :config
 
-    def linters
-      @registry
+    def application
+      Mugatu::Application.new(runways: runways)
+    end
+
+    def runways
+      fs = Mugatu::FashionShow.new(
+        linters_config: @config["linters"],
+        linters_registry: @registry,
+        root: @root_path
+      )
+
+      fs.runways
     end
   end
 end

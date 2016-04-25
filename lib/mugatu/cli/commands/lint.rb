@@ -10,16 +10,7 @@ module Mugatu
               requested_files
             end
 
-          # application = bootloader.main
-          fs = Mugatu::FashionShow.new(
-            linters_config: bootloader.config["linters"],
-            linters_registry: bootloader.linters,
-            root: bootloader.root_path
-          )
-
-          runways = fs.runways
-
-          application = Mugatu::Application.new(runways: runways)
+          application = bootloader.application
 
           problems = application.lint(files_to_check)
 
