@@ -31,7 +31,7 @@ module Mugatu
 
       @runways =
         @linters.map do |name, linter|
-          runway = Runway.new(matcher: @matchers[name], linter: linter)
+          runway = Runway.new(name: name, matcher: @matchers[name], linter: linter)
 
           [name, runway]
         end.to_h

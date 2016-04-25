@@ -18,12 +18,16 @@ module Mugatu
 
       output =
         Dir.chdir(@root) do
-          cmd = Cocaine::CommandLine.new("rubocop", "--format json #{changed_files_keys}")
+          cmd = Cocaine::CommandLine.new(
+            "rubocop",
+            "--format json #{changed_files_keys}",
+            expected_outcodes: [0, 1]
+          )
           cmd.run(changed_files_association)
         end
 
-      # parser = RubocopParser.new(output)
-      # parser.call
+      parser = RubocopParser.new
+      parser.call(output)
     end
   end
 end

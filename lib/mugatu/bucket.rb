@@ -28,7 +28,8 @@ module Mugatu
     private
 
     def match?(patterns, subject)
-      patterns.each do |pattern|
+      safe_patterns = patterns || []
+      safe_patterns.each do |pattern|
         if File.fnmatch?(pattern, subject)
           return true
         end

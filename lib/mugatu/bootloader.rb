@@ -7,6 +7,13 @@ module Mugatu
       @config      = YAML.load_file(@config_path)
     end
 
+    attr_reader :root_path
+    attr_reader :registry, :config_path, :config
+
+    def linters
+      @registry
+    end
+
     def init
       Main.new(@root_path, @registry, @config)
     end

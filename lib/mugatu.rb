@@ -7,6 +7,13 @@ require "yaml"
 
 require "cocaine"
 
+begin
+  # for development
+  require "pry-byebug"
+rescue LoadError
+end
+
+
 # Application code
 
 require "mugatu/changeset"
@@ -18,3 +25,6 @@ require "mugatu/bucket"
 require "mugatu/file_matcher"
 require "mugatu/main"
 require "mugatu/runway"
+require "mugatu/bootloader"
+require "mugatu/application"
+require "mugatu/fashion_show"
