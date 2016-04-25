@@ -14,7 +14,7 @@ module Mugatu
     attr_reader :file, :line, :misc
 
     def to_s
-      "#{name}: #{message}\n#{severity}"
+      "#{file}:#{line} #{severity}\n#{name}: #{message}"
     end
   end
 end

@@ -10,7 +10,7 @@ module Mugatu
           problems = application.lint(runtime.files)
 
           puts runtime.files.inspect
-          puts problems
+          puts problems.map(&:to_s).join("\n\n")
         end
       end
     end
