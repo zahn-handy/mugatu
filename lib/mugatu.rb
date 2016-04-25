@@ -16,6 +16,7 @@ end
 
 # Application code
 
+require "mugatu/runtime"
 require "mugatu/changeset"
 require "mugatu/changeset_since_ref"
 require "mugatu/problem"
