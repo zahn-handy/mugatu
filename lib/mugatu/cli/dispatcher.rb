@@ -4,8 +4,9 @@ module Mugatu
       include Thor::Actions
 
       desc "lint", "Run linters"
+      method_option :ref, desc: "Root for diff"
       def lint(*paths)
-        Commands::Lint.new(bootloader, paths)
+        Commands::Lint.new(bootloader, paths, options)
       end
 
       desc "init PATH", "Create an example .mugatu.yml at PATH"
