@@ -12,9 +12,9 @@ module Mugatu
 
       @files =
         if requested_files.empty?
-          Mugatu::ChangesetSinceRef.new(bootloader.root_path, @ref).files
+          Mugatu::Changesets::ChangesetSinceRef.new(bootloader.root_path, @ref).files
         else
-          requested_files
+          Mugatu::Changesets::NullChangeset.new(files: requested_files).files
         end
     end
 

@@ -2,7 +2,7 @@ require "test_helper"
 
 class FileMatcherTest < TestCase
   test "integration" do
-    fm = Mugatu::FileMatcher.new([dummy_bucket(:rubocop, ".rb"), dummy_bucket(:eslint, ".js")])
+    fm = Mugatu::FileAssociator.new([dummy_bucket(:rubocop, ".rb"), dummy_bucket(:eslint, ".js")])
 
     filenames = %w(
       form.jsx

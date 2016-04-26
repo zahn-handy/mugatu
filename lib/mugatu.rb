@@ -16,8 +16,9 @@ end
 # Application code
 
 require "mugatu/runtime"
-require "mugatu/changeset"
-require "mugatu/changeset_since_ref"
+require "mugatu/changesets/null_changeset"
+require "mugatu/changesets/changeset_since_head"
+require "mugatu/changesets/changeset_since_ref"
 require "mugatu/problem"
 require "mugatu/version"
 require "mugatu/rubocop_runner"

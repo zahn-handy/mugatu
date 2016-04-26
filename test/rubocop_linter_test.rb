@@ -15,6 +15,6 @@ class RubocopLinterTest < TestCase
   private
 
   def changed_files
-    Mugatu::Changeset.new(sandbox_path).files
+    Mugatu::Changesets::ChangesetSinceHead.new(sandbox_path).files
   end
 end
