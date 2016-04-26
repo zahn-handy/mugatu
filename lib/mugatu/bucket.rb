@@ -4,7 +4,7 @@ module Mugatu
       @name     = name
       @base     = base
       @excludes = excludes
-      @includes = includes 
+      @includes = includes
     end
 
     attr_reader :name
