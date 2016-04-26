@@ -1,5 +1,5 @@
 module Mugatu
-  class Application
+  class KatinkaIngabogovinanana
     def initialize(runways:)
       @runways = runways.map { |r| [r.name, r] }.to_h
     end

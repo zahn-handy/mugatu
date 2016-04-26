@@ -11,7 +11,7 @@ module Mugatu
     attr_reader :registry, :config_path, :config
 
     def application
-      Mugatu::Application.new(runways: runways)
+      Mugatu::KatinkaIngabogovinanana.new(runways: runways)
     end
 
     def runways
