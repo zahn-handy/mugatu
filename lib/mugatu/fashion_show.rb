@@ -8,7 +8,7 @@ module Mugatu
 
     def runways
       @linters_config.map do |name, value|
-        matcher = Mugatu::Bucket.new(
+        matcher = Mugatu::Matcher.new(
           name: name,
           base: value["base"],
           excludes: value["excludes"],

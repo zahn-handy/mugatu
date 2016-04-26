@@ -1,5 +1,5 @@
 module Mugatu
-  class Bucket
+  class Matcher
     def initialize(name:, base:, excludes:, includes:)
       @name     = name
       @base     = base

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class BucketTest < TestCase
+class MatcherTest < TestCase
   test "#belongs? with base, excludes, and includes" do
     patterns = {
       name: :eslint,
@@ -9,7 +9,7 @@ class BucketTest < TestCase
       includes: %w(nope/jk/**/* nope/but_actually_yes.js)
     }
 
-    fm = Mugatu::Bucket.new(patterns)
+    fm = Mugatu::Matcher.new(patterns)
 
     assert_equal true, fm.belongs?("nope/but_actually_yes.js")
     assert_equal true, fm.belongs?("nope/jk/lol/wildcard.js")
@@ -31,7 +31,7 @@ class BucketTest < TestCase
       includes: %w(nope/jk/**/* nope/but_actually_yes.js)
     }
 
-    fm = Mugatu::Bucket.new(patterns)
+    fm = Mugatu::Matcher.new(patterns)
 
     assert_equal true, fm.belongs?("nope/jk/wildcard.js")
     assert_equal false, fm.belongs?("nope/wildcard.js")
