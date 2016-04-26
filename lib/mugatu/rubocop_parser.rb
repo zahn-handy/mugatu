@@ -26,7 +26,8 @@ module Mugatu
         message:  offense["message"],
         severity: offense["severity"],
         file:     file,
-        line:     offense["location"]["line"]
+        line:     offense["location"]["line"],
+        range:    (0..-1),
       )
     end
   end
