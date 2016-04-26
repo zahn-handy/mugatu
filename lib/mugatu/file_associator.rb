@@ -1,5 +1,5 @@
 module Mugatu
-  class FileMatcher
+  class FileAssociator
     def initialize(bucket_matchers)
       @matchers = bucket_matchers
     end

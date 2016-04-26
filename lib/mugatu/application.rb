@@ -5,7 +5,7 @@ module Mugatu
     end
 
     def lint(files)
-      fm = Mugatu::FileMatcher.new(@runways.values)
+      fm = Mugatu::FileAssociator.new(@runways.values)
       buckets_of_files = fm.bucket(files)
 
       buckets_of_files.flat_map do |name, files|
