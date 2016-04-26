@@ -2,7 +2,6 @@ require "test_helper"
 
 class RunwayTest < TestCase
   test "#initialize" do
-    main = Mugatu::Main.new(File.dirname(__FILE__), registry, fixture_hash("rubocop_and_eslint.yml"))
   end
 
   # test "#load_linters" do
