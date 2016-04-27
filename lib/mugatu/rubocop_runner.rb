@@ -1,5 +1,9 @@
 module Mugatu
   class RubocopRunner
+    def self.name
+      :rubocop
+    end
+
     def initialize(root:)
       @root = root
     end
