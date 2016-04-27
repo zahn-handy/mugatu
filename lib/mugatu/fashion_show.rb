@@ -1,4 +1,5 @@
 module Mugatu
+  # TODO: This should be enumerable
   class FashionShow
     def initialize(linters_config:, linters_registry:, root:)
       @linters_config   = linters_config
