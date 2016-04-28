@@ -16,6 +16,8 @@ end
 # Application code
 
 require "mugatu/tod/hash_helpers"
+require "mugatu/bootloader"
+require "mugatu/application"
 require "mugatu/runtime"
 require "mugatu/changesets/null_changeset"
 require "mugatu/changesets/changeset_since_head"
@@ -25,8 +27,6 @@ require "mugatu/version"
 require "mugatu/matcher"
 require "mugatu/file_associator"
 require "mugatu/runway"
-require "mugatu/bootloader"
-require "mugatu/application"
 require "mugatu/fashion_show"
 require "mugatu/error_finder"
 require "mugatu/drivers/rubocop_driver"
