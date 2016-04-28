@@ -20,8 +20,8 @@ module Mugatu
 
     # TODO: Create null linter
     def build_linter(name)
-      linter_class = @linters_registry[name]
-      linter = linter_class.new(root: @root)
+      driver = @linters_registry[name]
+      Mugatu::Courier.new(driver: driver, root: @root)
     end
 
     def build_matcher(name, config)
