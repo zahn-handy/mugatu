@@ -35,7 +35,7 @@ module Mugatu
 
       def registry
         [
-          Mugatu::RubocopRunner
+          Mugatu::Drivers::RubocopRunner
         ]
       end
     end
