@@ -10,6 +10,34 @@ module Mugatu
           hash[head]
         end
       end
+
+      def self.symbolize_keys(obj)
+        case obj
+        when Hash
+          symbolize_keys_shallow(obj)
+        when Array
+          obj.map do |o|
+            symbolize_keys(obj)
+          end
+        else
+          obj
+        end
+      end
+
+      def self.symbolize_keys_shallow(hash)
+        hash.reduce({}) do |memo, (key, value)|
+          new_key =
+            if key.is_a?(String)
+              key.to_sym
+            else
+              key
+            end
+
+          memo[new_key] = symbolize_keys(value)
+
+          memo
+        end
+      end
     end
   end
 end
