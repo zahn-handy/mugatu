@@ -1,5 +1,5 @@
 module Mugatu
-  class Courier
+  class ErrorFinder
     def initialize(driver:, root:)
       @driver = driver
       @root   = root
