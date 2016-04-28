@@ -17,7 +17,7 @@ module Mugatu
           symbolize_keys_shallow(obj)
         when Array
           obj.map do |o|
-            symbolize_keys(obj)
+            symbolize_keys(o)
           end
         else
           obj
