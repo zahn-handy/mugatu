@@ -18,13 +18,10 @@ module Mugatu
     private
 
     def normalize_to_hash(object)
-      case object
-      when Hash
-        object
-      when String
+      if object.is_a?(String)
         JSON.parse(object)
       else
-        raise "orange mocha frappuccino"
+        object
       end
     end
   end
