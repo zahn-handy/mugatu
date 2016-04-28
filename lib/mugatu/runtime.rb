@@ -7,7 +7,7 @@ module Mugatu
         if ref
           ref
         else
-          dig(bootloader.config, "git", "base", "ref") || "HEAD"
+          Tod::HashHelpers.dig(bootloader.config, "git", "base", "ref") || "HEAD"
         end
 
       @files =
@@ -19,18 +19,5 @@ module Mugatu
     end
 
     attr_reader :files, :ref
-
-    private
-
-    # TODO: Extract to HashUtils helper module
-    def dig(hash, *keys)
-      head, *tail = keys
-
-      if hash[head].is_a?(Hash)
-        dig(hash[head], *tail)
-      else
-        hash[head]
-      end
-    end
   end
 end

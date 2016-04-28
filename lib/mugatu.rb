@@ -15,6 +15,7 @@ end
 
 # Application code
 
+require "mugatu/tod/hash_helpers"
 require "mugatu/runtime"
 require "mugatu/changesets/null_changeset"
 require "mugatu/changesets/changeset_since_head"
