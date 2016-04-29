@@ -1,5 +1,5 @@
 module Mugatu
-  module Tod
+  module Todd
     module HashHelpers
       def self.dig(hash, *keys)
         head, *tail = keys

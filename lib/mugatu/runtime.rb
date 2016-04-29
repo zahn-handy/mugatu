@@ -7,7 +7,7 @@ module Mugatu
         if ref
           ref
         else
-          Tod::HashHelpers.dig(bootloader.config, "git", "base", "ref") || "HEAD"
+          Todd::HashHelpers.dig(bootloader.config, "git", "base", "ref") || "HEAD"
         end
 
       @files =

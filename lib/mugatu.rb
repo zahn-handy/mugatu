@@ -15,7 +15,7 @@ end
 
 # Application code
 
-require "mugatu/tod/hash_helpers"
+require "mugatu/todd/hash_helpers"
 require "mugatu/bootloader"
 require "mugatu/application"
 require "mugatu/runtime"
