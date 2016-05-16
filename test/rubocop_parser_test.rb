@@ -3,7 +3,7 @@ require "test_helper"
 class RubocopParserTest < TestCase
   test "#parse_offense" do
     offense = extract("single")
-    parser  = Mugatu::RubocopParser.new
+    parser  = Mugatu::Drivers::RubocopDriver::Parser.new
     problem = parser.parse_offense("path/to/file.rb", JSON.parse(offense))
 
     assert_kind_of(Mugatu::Problem, problem)
@@ -17,7 +17,7 @@ class RubocopParserTest < TestCase
 
   test "#parse_many_offenses" do
     offenses = extract("multiple")
-    parser  = Mugatu::RubocopParser.new
+    parser  = Mugatu::Drivers::RubocopDriver::Parser.new
 
     problems = parser.parse_many_offenses("path/to/bad/file.rb", JSON.parse(offenses))
 
@@ -30,7 +30,7 @@ class RubocopParserTest < TestCase
   test "#call parses real stuff" do
     json = extract("real")
 
-    parser   = Mugatu::RubocopParser.new
+    parser   = Mugatu::Drivers::RubocopDriver::Parser.new
     problems = parser.call(json)
 
     assert_equal(6, problems.length)

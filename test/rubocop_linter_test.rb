@@ -8,7 +8,7 @@ class RubocopLinterTest < TestCase
   end
 
   test "integration" do
-    r      = Mugatu::RubocopRunner.new(root: sandbox_path)
+    r      = Mugatu::Drivers::RubocopDriver::Runner.new(root: sandbox_path)
     errors = r.call(changed_files)
   end
 
