@@ -1,6 +1,9 @@
 require "test_helper"
 
 class CenterForAntsTest < TestCase
+  def setup
+  end
+
   test "#call" do
     cfa = center_for_ants
 
