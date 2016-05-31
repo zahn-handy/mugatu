@@ -1,6 +1,6 @@
 module Mugatu
   # TODO: This should be enumerable
-  class FashionShow
+  class ProcessorBuilder
     def initialize(linters_config:, linters_registry:, root:)
       @linters_config   = linters_config
       @linters_registry = linters_registry.map { |l| [l.name.to_s, l] }.to_h

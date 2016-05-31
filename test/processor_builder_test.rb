@@ -1,11 +1,11 @@
 require "test_helper"
 
-class FashionShowTest < TestCase
+class ProcessorBuilderTest < TestCase
   def setup
   end
 
   test "#runways generates runways appropriate to provided config" do
-    show = Mugatu::FashionShow.new(
+    show = Mugatu::ProcessorBuilder.new(
       linters_config:   fixture_config["linters"],
       linters_registry: [],
       root:             sandbox_path

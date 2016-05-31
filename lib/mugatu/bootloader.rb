@@ -15,7 +15,7 @@ module Mugatu
     end
 
     def runways
-      fs = Mugatu::FashionShow.new(
+      fs = Mugatu::ProcessorBuilder.new(
         linters_config: @config["linters"],
         linters_registry: @registry,
         root: @root_path
