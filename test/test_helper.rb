@@ -6,6 +6,7 @@ require "ostruct"
 require "pry-byebug"
 require "minitest/autorun"
 require_relative "support/declarative"
+require_relative "support/quick_dummy"
 
 class TestCase < Minitest::Test
   extend Support::Declarative
