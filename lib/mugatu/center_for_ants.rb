@@ -2,8 +2,9 @@ module Mugatu
   class CenterForAnts
     include Enumerable
 
-    def initialize(driver:, root:, files: [])
+    def initialize(driver:, matcher:, root:, files: [])
       @driver = driver
+      @matcher = matcher
       @root   = root
       @files  = files
     end
@@ -14,6 +15,12 @@ module Mugatu
       end
 
       call.each(&Proc.new)
+    end
+
+    def pertinent_files
+      @files.select do |file|
+        @matcher.belongs?(file)
+      end
     end
 
     private

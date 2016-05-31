@@ -18,13 +18,25 @@ class CenterForAntsTest < TestCase
     assert_equal(3, run_count)
   end
 
+  test "#pertinent_files returns the list of matched files" do
+    cfa = center_for_ants(files: %w(hello hi))
+    assert_equal(%w(hello), cfa.pertinent_files)
+  end
+
   private
 
-  def center_for_ants
+  def center_for_ants(files: %w(fixtures/horrible_file.rb))
     Mugatu::CenterForAnts.new(
       driver: Mugatu::Drivers::RubocopDriver,
       root: File.dirname(__FILE__),
-      files: %w(fixtures/horrible_file.rb)
+      files: files,
+      matcher: matcher
+    )
+  end
+
+  def matcher
+    QuickDummy.new(
+      belongs?: -> (filename) { filename.length > 2 }
     )
   end
 end
