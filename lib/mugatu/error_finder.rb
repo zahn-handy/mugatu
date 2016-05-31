@@ -1,8 +1,16 @@
 module Mugatu
   class ErrorFinder
+    include Enumerable
+
     def initialize(driver:, root:)
       @driver = driver
       @root   = root
+    end
+
+    def each
+      if !block_given?
+        return enum_for(:each)
+      end
     end
 
     def call(changed_files)
