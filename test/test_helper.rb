@@ -87,6 +87,10 @@ class TestCase < Minitest::Test
     rm "delete_unstaged.rb"
   end
 
+  def sandbox_horrible
+    FileUtils.cp(fixture_path("horrible_file.rb"), sandbox_path)
+  end
+
   def sandbox_clean
     if within_directory?(file: sandbox_path, dir: sandboxes_path)
       FileUtils.rm_rf(sandbox_path)
