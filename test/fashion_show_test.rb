@@ -12,9 +12,7 @@ class FashionShowTest < TestCase
     )
     runways = show.runways
 
-    binding.pry
-
-    assert_instance_of Mugatu::Runway, runways.first
+    assert_instance_of(Mugatu::Processor, runways.first)
   end
 
   private

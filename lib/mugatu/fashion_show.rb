@@ -9,20 +9,18 @@ module Mugatu
 
     def runways
       @linters_config.map do |name, value|
+        driver = @linters_registry[name]
         matcher = build_matcher(name, value)
-        linter  = build_linter(value["linter"])
 
-        Mugatu::Runway.new(name: name, matcher: matcher, linter: linter)
+        Mugatu::Processor.new(
+          driver: driver,
+          matcher: matcher,
+          root: @root
+        )
       end
     end
 
     private
-
-    # TODO: Create null linter
-    def build_linter(name)
-      driver = @linters_registry[name]
-      Mugatu::Processor.new(driver: driver, root: @root)
-    end
 
     def build_matcher(name, config)
       Mugatu::Matcher.new(
