@@ -1,6 +1,9 @@
 require "test_helper"
 
 class FashionShowTest < TestCase
+  def setup
+  end
+
   test "#runways generates runways appropriate to provided config" do
     show = Mugatu::FashionShow.new(
       linters_config:   fixture_config["linters"],
