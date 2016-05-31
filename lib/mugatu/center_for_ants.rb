@@ -16,6 +16,8 @@ module Mugatu
       call.each(&Proc.new)
     end
 
+    private
+
     def call(changed_files = nil)
       runner = @driver::Runner.new(root: @root)
 
@@ -25,8 +27,6 @@ module Mugatu
       parser = @driver::Parser.new
       parser.call(result_hash)
     end
-
-    private
 
     def normalize_to_hash(object)
       if object.is_a?(String)

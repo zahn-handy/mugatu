@@ -4,13 +4,6 @@ class CenterForAntsTest < TestCase
   def setup
   end
 
-  test "#call" do
-    cfa = center_for_ants
-
-    assert_equal(3, cfa.call.length)
-    assert_kind_of(Mugatu::Problem, cfa.call[0])
-  end
-
   test "#each without a block returns an Enumerator of problems" do
     assert_kind_of(Enumerable, center_for_ants.each)
   end
