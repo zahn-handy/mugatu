@@ -10,7 +10,7 @@ class ProcessorBuilderTest < TestCase
       linters_registry: [],
       root:             sandbox_path
     )
-    runways = show.runways
+    runways = show.runways([])
 
     assert_instance_of(Mugatu::Processor, runways.first)
   end

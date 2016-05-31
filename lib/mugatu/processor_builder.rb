@@ -7,15 +7,16 @@ module Mugatu
       @root             = root
     end
 
-    def runways
+    def runways(files)
       @linters_config.map do |name, value|
-        driver = @linters_registry[name]
+        driver = @linters_registry[value["linter"]]
         matcher = build_matcher(name, value)
 
         Mugatu::Processor.new(
           driver: driver,
           matcher: matcher,
-          root: @root
+          root: @root,
+          files: files
         )
       end
     end
