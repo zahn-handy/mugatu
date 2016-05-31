@@ -1,5 +1,5 @@
 module Mugatu
-  class CenterForAnts
+  class Processor
     include Enumerable
 
     def initialize(driver:, matcher:, root:, files: [])

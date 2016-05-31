@@ -21,7 +21,7 @@ module Mugatu
     # TODO: Create null linter
     def build_linter(name)
       driver = @linters_registry[name]
-      Mugatu::CenterForAnts.new(driver: driver, root: @root)
+      Mugatu::Processor.new(driver: driver, root: @root)
     end
 
     def build_matcher(name, config)

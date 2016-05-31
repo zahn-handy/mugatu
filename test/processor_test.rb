@@ -1,6 +1,6 @@
 require "test_helper"
 
-class CenterForAntsTest < TestCase
+class ProcessorTest < TestCase
   def setup
   end
 
@@ -26,7 +26,7 @@ class CenterForAntsTest < TestCase
   private
 
   def center_for_ants(files: %w(fixtures/horrible_file.rb))
-    Mugatu::CenterForAnts.new(
+    Mugatu::Processor.new(
       driver: Mugatu::Drivers::RubocopDriver,
       root: File.dirname(__FILE__),
       files: files,
