@@ -1,5 +1,5 @@
 module Mugatu
-  class ErrorFinder
+  class CenterForAnts
     include Enumerable
 
     def initialize(driver:, root:)
