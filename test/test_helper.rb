@@ -31,6 +31,10 @@ class TestCase < Minitest::Test
       raise "can't run tests, sandbox already exists"
     end
 
+    if !File.exist?(sandboxes_path)
+      Dir.mkdir(sandboxes_path)
+    end
+
     Dir.mkdir(sandbox_path)
 
     Dir.chdir(sandbox_path) do
