@@ -31,7 +31,7 @@ class TestCase < Minitest::Test
       .join
   end
 
-  def git_init
+  def sandbox_init
     if File.exist?(sandbox_path)
       raise "can't run tests, sandbox already exists"
     end
@@ -40,7 +40,13 @@ class TestCase < Minitest::Test
       Dir.mkdir(sandboxes_path)
     end
 
-    Dir.mkdir(sandbox_path)
+    if !File.exist?(sandbox_path)
+      Dir.mkdir(sandbox_path)
+    end
+  end
+
+  def git_init
+    sandbox_init
 
     Dir.chdir(sandbox_path) do
       Cocaine::CommandLine.new("git", "init").run
