@@ -2,6 +2,7 @@ require "test_helper"
 
 class ChangesetTest < TestCase
   def setup
+    return skip
     sandbox_setup
   end
 
