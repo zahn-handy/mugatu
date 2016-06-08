@@ -4,7 +4,7 @@ class DiffParserTest < TestCase
   def setup
   end
 
-  test "#call does a decent first-pass parse" do
+  test "#result does a decent first-pass parse" do
     dp = Mugatu::DiffParser.new(diff1)
     result = dp.result
 
