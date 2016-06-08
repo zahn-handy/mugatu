@@ -24,6 +24,13 @@ class DiffParserTest < TestCase
     assert_match(/this line is modified/, readme.sections[0].diff[1])
   end
 
+  test "#additions provides list of files and stuff" do
+    dp = Mugatu::DiffParser.new(diff1)
+    additions = dp.additions
+
+    pp additions
+  end
+
   private
 
   def diff1
