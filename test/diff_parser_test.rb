@@ -6,15 +6,22 @@ class DiffParserTest < TestCase
 
   test "#call does a decent first-pass parse" do
     dp = Mugatu::DiffParser.new(diff1)
-    result = dp.call
+    result = dp.result
 
     readme = result[0]
     readme.header
 
+    # RESULT
     assert_equal(8, result.length)
 
+    # SECTION CONTEXT (first)
     assert_equal(4, readme.header.length)
     assert_match(/TODO: Delete this/, readme.sections[0].context)
+
+    # SECTION DIFF (first)
+    assert_equal(2, readme.sections[0].diff.length)
+    assert_match(/Add this line/, readme.sections[0].diff[0])
+    assert_match(/this line is modified/, readme.sections[0].diff[1])
   end
 
   private
