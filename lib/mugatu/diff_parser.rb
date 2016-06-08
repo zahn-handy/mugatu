@@ -2,6 +2,7 @@ module Mugatu
   class DiffParser
     FileDiff = Struct.new(:header, :sections)
     SectionDiff = Struct.new(:context, :diff)
+    Addition = Struct.new(:filename, :lines)
 
     BLANK_LINE_REGEX = /^\A*\z/.freeze
     BOLD_LINE_REGEX  = /^\e\[1m/.freeze
@@ -13,14 +14,14 @@ module Mugatu
       @lines = @diff.split(/\n/)
       @result = []
 
-      compute!
+      compute_result!
     end
 
     attr_reader :result
 
     private
 
-    def compute!
+    def compute_result!
       @index = 0
       @current_state = :file
       @current_file = new_file_diff
