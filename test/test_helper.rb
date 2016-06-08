@@ -3,6 +3,7 @@ require "mugatu"
 require "mugatu/cli"
 
 require "ostruct"
+require "pp"
 
 require "pry-byebug"
 require "minitest/autorun"
