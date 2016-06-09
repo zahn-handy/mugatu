@@ -28,7 +28,7 @@ class DiffParserTest < TestCase
     dp = Mugatu::DiffParser.new(diff1)
     additions = dp.additions
 
-    pp additions
+    assert_equal(8, additions.length)
   end
 
   private
