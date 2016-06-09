@@ -77,7 +77,6 @@ module Mugatu
             context_string = parse_context(section_diff.context)
 
             if context_string.nil?
-              puts "😭"
               next
             end
 
