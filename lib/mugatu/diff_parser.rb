@@ -83,6 +83,10 @@ module Mugatu
 
             context = context_lines(context_string)
 
+            if context[:plus_count] == 0
+              next
+            end
+
             section_diff.diff.map do |line|
               is_addition =
                 if line =~ /\e\[32m+/
