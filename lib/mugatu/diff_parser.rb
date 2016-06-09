@@ -107,10 +107,21 @@ module Mugatu
       match = CONTEXT_NUMBERS_REGEX.match(context_string)
 
       if match.nil?
-        puts context_string
-        nil
+        {
+          minus_start: 0,
+          minus_count: 0,
+          plus_start: 0,
+          plus_count: 0
+        }
       else
-        match
+        hash_keys = match.names.map(&:to_sym)
+        hash_vals = match.captures.map { |v| v.nil? ? nil : v.to_i }
+        result = hash_keys.zip(hash_vals).to_h
+
+        result[:minus_count] ||= 1
+        result[:plus_count] ||= 1
+
+        result
       end
     end
 
