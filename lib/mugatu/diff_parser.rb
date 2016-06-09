@@ -60,7 +60,19 @@ module Mugatu
     end
 
     attr_reader :result
-    attr_reader :additions
+
+    def additions
+      @additions.map do |addition|
+        c = addition[:context]
+        start = c[:plus_start]
+        count = c[:plus_count]
+        count_inclusive = count - 1
+        stop = start + count_inclusive
+        range = (start..stop)
+
+        Addition.new(addition[:filename], range)
+      end
+    end
 
     private
 
@@ -86,21 +98,10 @@ module Mugatu
               next
             end
 
-            section_diff.diff.map do |line|
-              is_addition =
-                if line =~ /\e\[32m+/
-                  true
-                else
-                  false
-                end
-
-              {
-                filename: filename,
-                context: context,
-                is_addition: is_addition,
-                line: line
-              }
-            end
+            {
+              filename: filename,
+              context: context,
+            }
           end
         end
         .compact
