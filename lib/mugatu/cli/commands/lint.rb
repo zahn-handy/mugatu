@@ -29,7 +29,7 @@ module Mugatu
               end
             end
 
-          puts runtime.files.inspect
+          pp runtime.files
           puts problems.map(&:to_s).join("\n\n")
           puts "😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 😭 "
           puts printable_problems.map(&:to_s).join("\n\n")
