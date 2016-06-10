@@ -35,7 +35,7 @@ module Mugatu
       end
 
       def staged_modified_files_cmd
-        Cocaine::CommandLine.new("git", "diff-index --name-only --diff-filter=M :ref")
+        Cocaine::CommandLine.new("git", "diff-index --name-only --diff-filter=AM :ref")
       end
 
       def unstaged_files_cmd
