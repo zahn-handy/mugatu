@@ -1,5 +1,3 @@
-require "pp"
-
 module Mugatu
   module Cli
     module Commands
