@@ -14,7 +14,7 @@ module Mugatu
         return enum_for(:each)
       end
 
-      call.each(&Proc.new)
+      problems.each(&Proc.new)
     end
 
     def pertinent_files
@@ -25,10 +25,10 @@ module Mugatu
 
     private
 
-    def call(changed_files = nil)
+    def problems
       runner = @driver::Runner.new(root: @root)
 
-      result = runner.call(changed_files || @files)
+      result = runner.call(@files)
       result_hash = normalize_to_hash(result)
 
       parser = @driver::Parser.new
