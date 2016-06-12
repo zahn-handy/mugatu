@@ -2,31 +2,25 @@ require "test_helper"
 
 class CliCommandsLintTest < TestCase
   def setup
-    sandbox_init
-
-    FileUtils.cp(
-      fixture_path("rubocop.yml"),
-      File.join(sandbox_path, ".mugatu.yml")
-    )
-  end
-
-  def teardown
-    sandbox_clean
   end
 
   test "integration of `mugatu lint` command" do
-    Mugatu::Cli::Commands::Lint.new(
-      bootloader,
-      [],
-      {}
-    )
+    capture_io do
+      Dir.chdir root_path do
+        Mugatu::Cli::Commands::Lint.new(
+          bootloader,
+          [],
+          {}
+        )
+      end
+    end
   end
 
   private
 
   def bootloader
     Mugatu::Bootloader.new(
-      root_path: sandbox_path,
+      root_path: root_path,
       registry: [
         Mugatu::Drivers::RubocopDriver
       ]

@@ -25,6 +25,10 @@ class TestCase < Minitest::Test
     @sandbox_path ||= File.join(sandboxes_path, "mugatu_test_#{random_string}")
   end
 
+  def root_path
+    File.expand_path("../..", __FILE__)
+  end
+
   def random_string(length = 8)
     ("a".."z")
       .to_a
