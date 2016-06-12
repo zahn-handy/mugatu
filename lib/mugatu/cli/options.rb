@@ -3,7 +3,7 @@ module Mugatu
     class Options
       def self.parse(argv)
         instance = new(argv)
-        instance.options
+        instance.result
       end
 
       OUTPUT_FORMATS = %i(pretty json).freeze
@@ -11,12 +11,22 @@ module Mugatu
       def initialize(argv)
         @options = {}
         @argv = argv
+        @ran = false
       end
 
       def options
-        parser.parse!(@argv.dup)
+        return @options if @ran
+
+        parser.parse!(@argv)
+        @ran = true
 
         @options
+      end
+
+      def files
+        options
+
+        @argv
       end
 
       private
