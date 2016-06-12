@@ -1,6 +1,9 @@
 require "test_helper"
 
 class RubocopParserTest < TestCase
+  def setup
+  end
+
   test "#parse_offense" do
     offense = extract("single")
     parser  = Mugatu::Drivers::RubocopDriver::Parser.new
