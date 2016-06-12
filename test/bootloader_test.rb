@@ -10,6 +10,10 @@ class BootloaderTest < TestCase
     )
   end
 
+  def teardown
+    sandbox_clean
+  end
+
   test "#application" do
     bootloader.application
   end
