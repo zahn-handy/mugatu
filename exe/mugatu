@@ -8,5 +8,5 @@ end
 require "mugatu"
 require "mugatu/cli"
 
-runner = Mugatu::Cli::Run.parse(ARGV)
+options = Mugatu::Cli::Options.parse(ARGV)
 # Mugatu::Cli::Dispatcher.start(ARGV)

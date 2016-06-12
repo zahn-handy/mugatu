@@ -1,13 +1,9 @@
 module Mugatu
   module Cli
     class Options
-    end
-
-    class Run
       def self.parse(argv)
         instance = new({}, argv)
-        options = instance.options
-        puts options
+        instance.options
       end
 
       OUTPUT_FORMATS = %i(pretty json).freeze
