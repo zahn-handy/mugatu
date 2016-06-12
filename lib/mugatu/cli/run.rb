@@ -32,6 +32,10 @@ module Mugatu
             parser.separator ""
             parser.separator "options:"
 
+            parser.on("--base REF", "Git ref of base commit") do |ref|
+              @options[:ref] = ref
+            end
+
             parser.on("-f [FORMAT]", "--format [FORMAT]", OUTPUT_FORMATS, "Output format (#{OUTPUT_FORMATS.join(", ")})") do |format|
               @options[:format] = format
             end
