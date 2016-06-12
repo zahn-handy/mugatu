@@ -2,14 +2,14 @@ module Mugatu
   module Cli
     class Options
       def self.parse(argv)
-        instance = new({}, argv)
+        instance = new(argv)
         instance.options
       end
 
       OUTPUT_FORMATS = %i(pretty json).freeze
 
-      def initialize(options, argv)
-        @options = options
+      def initialize(argv)
+        @options = {}
         @argv = argv
       end
 
