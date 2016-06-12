@@ -4,10 +4,10 @@ module Mugatu
     SectionDiff = Struct.new(:context, :diff)
     Addition = Struct.new(:filename, :lines)
 
-    BLANK_LINE_REGEX = /^\A*\z/.freeze
-    BOLD_LINE_REGEX  = /^\e\[1m/.freeze
-    CYAN_LINE_REGEX  = /^\e\[36m/.freeze
-    RED_OR_GREEN_LINE_REGEX = /^\e\[3[12]m/.freeze
+    BLANK_LINE_REGEX = /^\A*\z/
+    BOLD_LINE_REGEX  = /^\e\[1m/
+    CYAN_LINE_REGEX  = /^\e\[36m/
+    RED_OR_GREEN_LINE_REGEX = /^\e\[3[12]m/
     HEADER_FILENAME_REGEX =
       /
         ^
@@ -138,7 +138,6 @@ module Mugatu
         match[1]
       end
     end
-
 
     def changed_filename(last_header_line)
       filename_match = HEADER_FILENAME_REGEX.match(last_header_line)

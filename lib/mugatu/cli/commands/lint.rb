@@ -7,7 +7,7 @@ module Mugatu
           runtime = Mugatu::Runtime.new(bootloader: bootloader, requested_files: requested_files, ref: options[:ref])
           diff = Mugatu::Diff.new(base: runtime.ref, compare: "HEAD").compute
           additions = Mugatu::DiffParser.new(diff).additions
-          additions_hash = additions.group_by { |addition| addition.filename }
+          additions_hash = additions.group_by(&:filename)
 
           application = bootloader.application
 

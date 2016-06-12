@@ -29,7 +29,7 @@ module Mugatu
       def parser
         @parser ||=
           OptionParser.new do |parser|
-            parser.banner = "usage: #{$0} [options] [files]"
+            parser.banner = "usage: #{$PROGRAM_NAME} [options] [files]"
             parser.separator ""
             parser.separator "options:"
 
