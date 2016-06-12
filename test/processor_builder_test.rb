@@ -1,9 +1,6 @@
 require "test_helper"
 
 class ProcessorBuilderTest < TestCase
-  def setup
-  end
-
   test "#runways generates runways appropriate to provided config" do
     show = Mugatu::ProcessorBuilder.new(
       linters_config:   fixture_config["linters"],

@@ -1,9 +1,6 @@
 require "test_helper"
 
 class CliCommandsLintTest < TestCase
-  def setup
-  end
-
   test "integration of `mugatu lint` command" do
     capture_io do
       Dir.chdir root_path do

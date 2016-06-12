@@ -1,9 +1,6 @@
 require "test_helper"
 
 class ProcessorTest < TestCase
-  def setup
-  end
-
   test "#each without a block returns an Enumerator of problems" do
     assert_kind_of(Enumerable, center_for_ants.each)
   end

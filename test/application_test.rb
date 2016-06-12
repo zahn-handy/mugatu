@@ -1,9 +1,6 @@
 require "test_helper"
 
 class ApplicationTest < TestCase
-  def setup
-  end
-
   test "#lint returns an array of Problems" do
     problems = application.lint(%w(horrible_file.rb))
 
