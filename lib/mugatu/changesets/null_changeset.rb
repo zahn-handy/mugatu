@@ -1,11 +1,19 @@
 module Mugatu
   module Changesets
     class NullChangeset
+      include Enumerable
+
       def initialize(files:)
         @files = files
       end
 
-      attr_reader :files
+      def each
+        if block_given?
+          @files.each(&Proc.new)
+        else
+          enum_for(:each)
+        end
+      end
     end
   end
 end

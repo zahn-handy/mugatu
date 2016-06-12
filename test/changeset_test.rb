@@ -10,8 +10,8 @@ class ChangesetTest < TestCase
   end
 
   test "#files returns all modified files" do
-    cs = Mugatu::Changesets::ChangesetSinceHead.new(sandbox_path)
-    changed_files = cs.files
+    cs = Mugatu::Changesets::ChangesetSinceRef.new(sandbox_path, "HEAD")
+    changed_files = cs.each.to_a
 
     assert_includes(changed_files, "edit_unstaged.rb")
     assert_includes(changed_files, "new_unstaged.rb")

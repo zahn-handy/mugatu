@@ -1,16 +1,26 @@
 module Mugatu
   module Changesets
     class ChangesetSinceRef
+      include Enumerable
+
       def initialize(root, ref)
         @root = root
         @ref  = ref
       end
 
-      def files
-        committed_modified_files + staged_modified_files + unstaged_files
+      def each
+        if block_given?
+          files.each(&Proc.new)
+        else
+          enum_for(:each)
+        end
       end
 
       private
+
+      def files
+        committed_modified_files + staged_modified_files + unstaged_files
+      end
 
       def committed_modified_files
         Dir.chdir(@root) do
