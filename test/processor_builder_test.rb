@@ -1,15 +1,15 @@
 require "test_helper"
 
 class ProcessorBuilderTest < TestCase
-  test "#runways generates runways appropriate to provided config" do
+  test "#processors generates processors appropriate to provided config" do
     show = Mugatu::ProcessorBuilder.new(
       linters_config:   fixture_config["linters"],
       linters_registry: [],
       root:             sandbox_path
     )
-    runways = show.runways([])
+    processors = show.processors([])
 
-    assert_instance_of(Mugatu::Processor, runways.first)
+    assert_instance_of(Mugatu::Processor, processors.first)
   end
 
   private

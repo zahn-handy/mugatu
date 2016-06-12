@@ -5,9 +5,9 @@ module Mugatu
     end
 
     def lint(all_files)
-      runways = @processor_builder.runways(all_files)
+      processors = @processor_builder.processors(all_files)
 
-      runways.flat_map do |runway|
+      processors.flat_map do |runway|
         runway.each.to_a
       end
     end
