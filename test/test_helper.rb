@@ -13,10 +13,6 @@ require_relative "support/quick_dummy"
 class TestCase < Minitest::Test
   extend Support::Declarative
 
-  def setup
-    skip
-  end
-
   def sandboxes_path
     File.expand_path("sandboxes", File.dirname(__FILE__))
   end
