@@ -27,13 +27,13 @@ module Mugatu
               end
             end
 
-          formatter = Mugatu::Formatters::Pretty.new
-          formatter.start(
+          formatter = Mugatu::Formatters::Pretty.new(
             additions: additions_hash,
             files: runtime.files,
             start_time: start_time
           )
-          printable_problems.each { |p| formatter.problem(p) }
+          formatter.start
+          printable_problems.each { |p| formatter.found(p) }
           formatter.done
         end
       end
