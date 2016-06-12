@@ -11,7 +11,8 @@ class ProblemTest < TestCase
         file: "path/to/file.rb",
         line: 3,
         column: 8,
-        length: 20
+        length: 20,
+        range: (0..2)
       )
 
     assert_equal Object, problem.linter
