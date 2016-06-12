@@ -10,7 +10,7 @@ class DiffTest < TestCase
   end
 
   test "#compute" do
-    puts diff.compute
+    diff.compute
   end
 
   private
