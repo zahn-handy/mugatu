@@ -8,6 +8,5 @@ end
 require "mugatu"
 require "mugatu/cli"
 
-runner = Mugatu::Cli::Run.new(ARGV.dup)
-runner.call
+runner = Mugatu::Cli::Run.parse(ARGV)
 # Mugatu::Cli::Dispatcher.start(ARGV)
