@@ -31,7 +31,7 @@ class RubocopParserTest < TestCase
   end
 
   test "#call parses real stuff" do
-    json = extract("real")
+    json = JSON.parse(extract("real"))
 
     parser   = Mugatu::Drivers::RubocopDriver::Parser.new
     problems = parser.call(json)
