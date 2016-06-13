@@ -78,33 +78,34 @@ module Mugatu
 
     def compute_additions!
       @additions =
-        result.flat_map do |file_diff|
-          filename = changed_filename(file_diff.header.last)
+        result
+          .flat_map do |file_diff|
+            filename = changed_filename(file_diff.header.last)
 
-          if filename.nil?
-            next
-          end
-
-          file_diff.sections.flat_map do |section_diff|
-            context_string = parse_context(section_diff.context)
-
-            if context_string.nil?
+            if filename.nil?
               next
             end
 
-            context = context_lines(context_string)
+            file_diff.sections.flat_map do |section_diff|
+              context_string = parse_context(section_diff.context)
 
-            if context[:plus_count] == 0
-              next
+              if context_string.nil?
+                next
+              end
+
+              context = context_lines(context_string)
+
+              if context[:plus_count] == 0
+                next
+              end
+
+              {
+                filename: filename,
+                context: context
+              }
             end
-
-            {
-              filename: filename,
-              context: context,
-            }
           end
-        end
-        .compact
+          .compact
     end
 
     def context_lines(context_string)

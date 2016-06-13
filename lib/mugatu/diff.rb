@@ -26,11 +26,11 @@ module Mugatu
     def git_diff_command
       Cocaine::CommandLine.new(
         "git",
-        "diff " +
-        "--unified=0 " +
-        "--color=always " +
-        "--find-renames " +
-        "--diff-algorithm=histogram " +
+        "diff " \
+        "--unified=0 " \
+        "--color=always " \
+        "--find-renames " \
+        "--diff-algorithm=histogram " \
         ":base :compare"
       )
     end
