@@ -4,7 +4,12 @@ module Mugatu
       class Lint
         def initialize(bootloader, requested_files, options)
           start_time = Time.now
-          runtime = Mugatu::Runtime.new(bootloader: bootloader, requested_files: requested_files, ref: options[:ref])
+          runtime = Mugatu::Runtime.new(
+            bootloader: bootloader,
+            requested_files: requested_files,
+            ref: options[:ref],
+            options: options
+          )
           diff = Mugatu::Diff.new(base: runtime.ref, compare: "HEAD").compute
           additions = Mugatu::DiffParser.new(diff).additions
           additions_hash = additions.group_by(&:filename)
@@ -27,7 +32,7 @@ module Mugatu
               end
             end
 
-          formatter = Mugatu::Formatters::Pretty.new(
+          formatter = runtime.formatter.new(
             additions: additions_hash,
             files: runtime.files,
             start_time: start_time
