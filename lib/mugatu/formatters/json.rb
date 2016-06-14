@@ -23,7 +23,7 @@ module Mugatu
           summary: {
             elapsed_time: end_time - @start_time
           },
-          searched_files: @files,
+          searched_files: @files.each.to_a,
           problems: problems
         }
 
