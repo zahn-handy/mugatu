@@ -19,6 +19,9 @@ module Mugatu
         end
 
         def parse_offense(file, offense)
+          problem_start = offense["location"]["column"]
+          problem_end = problem_start + offense["location"]["length"] - 1
+
           Mugatu::Problem.new(
             linter:   @linter,
             name:     offense["cop_name"],
@@ -26,7 +29,7 @@ module Mugatu
             severity: offense["severity"],
             file:     file,
             line:     offense["location"]["line"],
-            range:    (0..-1),
+            range:    (problem_start..problem_end),
           )
         end
       end
