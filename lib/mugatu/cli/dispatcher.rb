@@ -20,7 +20,11 @@ module Mugatu
       private
 
       def bootloader
-        @bootloader ||= Mugatu::Bootloader.new(root_path: current_working_directory, registry: registry)
+        @bootloader ||=
+          Mugatu::Bootloader.new(
+            root_path: current_working_directory,
+            registry: registry
+          )
       end
 
       def runtime(requested_files)
