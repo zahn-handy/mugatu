@@ -41,5 +41,4 @@ Gem::Specification.new do |spec|
 
   spec.add_runtime_dependency "cocaine", "~> 0.5"
   spec.add_runtime_dependency "rubocop", "~> 0.30"
-  spec.add_runtime_dependency "thor", "~> 0.19"
 end

@@ -1,4 +1,3 @@
-require "thor"
 require "optparse"
 
 require "mugatu/cli/options"
