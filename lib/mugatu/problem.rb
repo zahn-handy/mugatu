@@ -12,7 +12,7 @@ module Mugatu
     end
 
     attr_reader :linter, :name, :message, :severity
-    attr_reader :file, :line, :misc
+    attr_reader :file, :line, :range, :misc
 
     def to_s
       "#{file}:#{line} #{severity}\n#{name}: #{message}"

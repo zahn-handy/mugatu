@@ -5,6 +5,28 @@ module Mugatu
         :json
       end
 
+      class ProblemPresenter
+        def initialize(problem)
+          @problem = problem
+        end
+
+        def to_json(state = nil)
+          as_json =
+            {
+              linter: @problem.linter,
+              name: @problem.name,
+              message: @problem.name,
+              severity: @problem.severity,
+              file: @problem.file,
+              line: @problem.line,
+              line_begin: @problem.range.first,
+              line_end: @problem.range.last
+            }
+
+          as_json.to_json(state)
+        end
+      end
+
       def initialize(additions:, files:, start_time:)
         @problems = []
         @files = files
@@ -17,7 +39,7 @@ module Mugatu
 
       def done
         end_time = Time.now
-        problems = @problems.map { |problem| problem }
+        problems = @problems.map { |problem| ProblemPresenter.new(problem) }
 
         result = {
           summary: {
