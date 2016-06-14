@@ -13,13 +13,22 @@ module Mugatu
       attr_reader :options
 
       def lint(*paths)
-        Commands::Lint.new(bootloader, paths, options)
+        Commands::Lint.new(runtime(paths))
       end
 
       private
 
       def bootloader
-        Mugatu::Bootloader.new(root_path: current_working_directory, registry: registry)
+        @bootloader ||= Mugatu::Bootloader.new(root_path: current_working_directory, registry: registry)
+      end
+
+      def runtime(requested_files)
+        Mugatu::Runtime.new(
+          bootloader: bootloader,
+          requested_files: requested_files,
+          ref: options[:ref],
+          options: options
+        )
       end
 
       def current_working_directory

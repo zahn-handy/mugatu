@@ -2,14 +2,9 @@ module Mugatu
   module Cli
     module Commands
       class Lint
-        def initialize(bootloader, requested_files, options)
+        def initialize(runtime)
+          bootloader = runtime.bootloader
           start_time = Time.now
-          runtime = Mugatu::Runtime.new(
-            bootloader: bootloader,
-            requested_files: requested_files,
-            ref: options[:ref],
-            options: options
-          )
           diff = Mugatu::Diff.new(base: runtime.ref, compare: "HEAD").compute
           additions = Mugatu::DiffParser.new(diff).additions
           additions_hash = additions.group_by(&:filename)

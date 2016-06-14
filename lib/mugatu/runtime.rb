@@ -7,7 +7,7 @@ module Mugatu
       @options = options
     end
 
-    attr_reader :formatter
+    attr_reader :bootloader
 
     def ref
       if @ref
