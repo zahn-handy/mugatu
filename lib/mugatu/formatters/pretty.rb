@@ -10,8 +10,11 @@ module Mugatu
       end
 
       def done
-        puts @problems.map(&:to_s).join("\n\n")
-        puts
+        if @problems.any?
+          puts @problems.map(&:to_s).join("\n\n")
+          puts
+        end
+
         puts "Searched #{@files.count} files. Found #{@problems.count} problems."
       end
 
