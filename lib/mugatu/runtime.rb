@@ -31,10 +31,23 @@ module Mugatu
       end
     end
 
+    def formatter_hash
+      formatters.map do |formatter|
+        [formatter.identifier, formatter]
+      end.to_h
+    end
+
+    def formatters
+      Mugatu::Formatters.constants.map do |formatter_class_name|
+        Mugatu::Formatters.const_get(formatter_class_name)
+      end
+    end
+
     def formatter
-      case @options[:format]
-      when :json
-        Mugatu::Formatters::Json
+      found_formatter = formatter_hash[@options[:format]]
+
+      if found_formatter
+        found_formatter
       else
         Mugatu::Formatters::Pretty
       end

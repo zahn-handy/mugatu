@@ -1,6 +1,10 @@
 module Mugatu
   module Formatters
     class Pretty
+      def self.identifier
+        :pretty
+      end
+
       def initialize(additions:, files:, start_time:)
         @problems = []
         @files = files

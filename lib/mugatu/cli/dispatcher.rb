@@ -1,13 +1,14 @@
 module Mugatu
   module Cli
     class Dispatcher
-      def self.start(options, paths)
-        instance = new(options)
+      def self.start(options, paths, registry)
+        instance = new(options, registry)
         instance.lint(*paths)
       end
 
-      def initialize(options)
+      def initialize(options, registry)
         @options = options
+        @registry = registry
       end
 
       attr_reader :options
@@ -23,7 +24,7 @@ module Mugatu
         @bootloader ||=
           Mugatu::Bootloader.new(
             root_path: current_working_directory,
-            registry: registry
+            registry: @registry.linters
           )
       end
 
@@ -38,12 +39,6 @@ module Mugatu
 
       def current_working_directory
         File.expand_path("")
-      end
-
-      def registry
-        [
-          Mugatu::Drivers::RubocopDriver
-        ]
       end
     end
   end

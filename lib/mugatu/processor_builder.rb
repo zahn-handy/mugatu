@@ -3,13 +3,13 @@ module Mugatu
   class ProcessorBuilder
     def initialize(linters_config:, linters_registry:, root:)
       @linters_config   = linters_config
-      @linters_registry = linters_registry.map { |l| [l.name.to_s, l] }.to_h
+      @linters_registry = linters_registry
       @root             = root
     end
 
     def processors(files)
       @linters_config.map do |name, value|
-        driver = @linters_registry[value["linter"]]
+        driver = @linters_registry[value["linter"].to_sym]
         matcher = build_matcher(name, value)
 
         Mugatu::Processor.new(

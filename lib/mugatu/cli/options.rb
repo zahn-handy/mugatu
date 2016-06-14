@@ -1,12 +1,11 @@
 module Mugatu
   module Cli
     class Options
-      OUTPUT_FORMATS = %i(pretty json).freeze
-
-      def initialize(argv)
+      def initialize(argv, registry)
         @options = {}
         @argv = argv
         @ran = false
+        @registry = registry
       end
 
       def options
@@ -37,7 +36,9 @@ module Mugatu
               @options[:ref] = ref
             end
 
-            parser.on("-f [FORMAT]", "--format [FORMAT]", OUTPUT_FORMATS, "Output format (#{OUTPUT_FORMATS.join(", ")})") do |format|
+            formatters = @registry.formatter_registry.keys
+
+            parser.on("-f [FORMAT]", "--format [FORMAT]", formatters, "Output format (#{formatters.join(", ")})") do |format|
               @options[:format] = format
             end
 

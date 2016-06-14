@@ -1,6 +1,10 @@
 module Mugatu
   module Formatters
     class Json
+      def self.identifier
+        :json
+      end
+
       def initialize(additions:, files:, start_time:)
         @problems = []
         @files = files

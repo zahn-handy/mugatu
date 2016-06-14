@@ -4,7 +4,7 @@ require_relative "rubocop_driver/runner"
 module Mugatu
   module Drivers
     module RubocopDriver
-      def self.name
+      def self.identifier
         :rubocop
       end
     end
