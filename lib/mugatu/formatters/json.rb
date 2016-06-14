@@ -15,7 +15,7 @@ module Mugatu
             {
               linter: @problem.linter,
               name: @problem.name,
-              message: @problem.name,
+              message: @problem.message,
               severity: @problem.severity,
               file: @problem.file,
               line: @problem.line,
