@@ -23,7 +23,6 @@ module Mugatu
               contexts = additions_hash[problem.file]
 
               if contexts.nil?
-                puts problem.file
                 true
               else
                 contexts.any? do |context|
