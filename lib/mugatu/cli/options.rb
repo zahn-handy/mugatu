@@ -45,26 +45,26 @@ module Mugatu
               @options[:config] = config_file
             end
 
-            parser.on_tail("-h", "--help", "Show this message") do
+            parser.on("-h", "--help", "Show this message") do
               puts parser
               exit
             end
 
-            parser.on_tail("-v", "--version", "Print version") do
+            parser.on("-v", "--version", "Print version") do
               puts Mugatu::VERSION
             end
 
-            parser.define_tail ""
-            parser.define_tail "in your project root, create a file called `.mugatu.yml`"
-            parser.define_tail "with these contents:"
-            parser.define_tail ""
-            parser.define_tail "```"
+            parser.separator ""
+            parser.separator "in your project root, create a file called `.mugatu.yml`"
+            parser.separator "with these contents:"
+            parser.separator ""
+            parser.separator "```"
 
             File.read(File.expand_path("../../../../.mugatu.yml", __FILE__)).each_line do |line|
-              parser.define_tail line
+              parser.separator line
             end
 
-            parser.define_tail "```"
+            parser.separator "```"
           end
       end
     end
