@@ -13,7 +13,8 @@ module Mugatu
       attr_reader :options
 
       def lint(*paths)
-        Main.new(runtime(paths))
+        main = Main.new(runtime(paths))
+        main.call
       end
 
       private

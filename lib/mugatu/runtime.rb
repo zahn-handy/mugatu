@@ -11,7 +11,8 @@ module Mugatu
 
     def additions
       diff = Mugatu::Diff.new(base: ref, compare: "HEAD").compute
-      Mugatu::DiffParser.new(diff).additions
+      additions = Mugatu::DiffParser.new(diff).additions
+      additions.group_by(&:filename)
     end
 
     def ref
