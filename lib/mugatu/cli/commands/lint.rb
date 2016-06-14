@@ -5,9 +5,7 @@ module Mugatu
         def initialize(runtime)
           bootloader = runtime.bootloader
           start_time = Time.now
-          diff = Mugatu::Diff.new(base: runtime.ref, compare: "HEAD").compute
-          additions = Mugatu::DiffParser.new(diff).additions
-          additions_hash = additions.group_by(&:filename)
+          additions_hash = runtime.additions.group_by(&:filename)
 
           application = bootloader.application
 

@@ -9,6 +9,11 @@ module Mugatu
 
     attr_reader :bootloader
 
+    def additions
+      diff = Mugatu::Diff.new(base: ref, compare: "HEAD").compute
+      Mugatu::DiffParser.new(diff).additions
+    end
+
     def ref
       if @ref
         @ref
