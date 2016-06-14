@@ -10,4 +10,4 @@ require "mugatu/cli"
 
 registry = Mugatu::Registry.new
 options = Mugatu::Cli::Options.new(ARGV.dup, registry)
-Mugatu::Cli::Dispatcher.start(options.options, options.files, registry)
+Mugatu::Cli::Dispatcher.start(registry, options.files, options.options)

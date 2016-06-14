@@ -1,20 +1,21 @@
 module Mugatu
   module Cli
     class Dispatcher
-      def self.start(options, paths, registry)
-        instance = new(options, registry)
-        instance.lint(*paths)
+      def self.start(registry, paths, options)
+        instance = new(registry, paths, options)
+        instance.lint
       end
 
-      def initialize(options, registry)
-        @options = options
+      def initialize(registry, paths, options)
         @registry = registry
+        @paths = paths
+        @options = options
       end
 
       attr_reader :options
 
-      def lint(*paths)
-        main = Main.new(runtime(paths))
+      def lint
+        main = Main.new(runtime)
         main.call
       end
 
@@ -28,10 +29,10 @@ module Mugatu
           )
       end
 
-      def runtime(requested_files)
+      def runtime
         Mugatu::Runtime.new(
           bootloader: bootloader,
-          requested_files: requested_files,
+          requested_files: @paths,
           ref: options[:ref],
           options: options
         )
