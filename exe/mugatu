@@ -7,7 +7,10 @@ end
 
 require "mugatu"
 require "mugatu/cli"
+require "mugatu/zipdisk"
 
 registry = Mugatu::Registry.new
 options = Mugatu::Cli::Options.new(ARGV.dup, registry)
+Mugatu::Zipdisk.setup(options.options[:loglevel])
+
 Mugatu::Cli::Dispatcher.start(registry, options.files, options.options)

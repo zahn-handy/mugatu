@@ -46,6 +46,11 @@ module Mugatu
               @options[:config] = config_file
             end
 
+            loglevels = %i(none debug info warn error fatal unknown)
+            parser.on("--logger [LEVEL]", loglevels, "Log levels (#{loglevels.join(", ")}. default: none)") do |loglevel|
+              @options[:loglevel] = loglevel
+            end
+
             parser.on("-h", "--help", "Show this message") do
               puts parser
               exit
