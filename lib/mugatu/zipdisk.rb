@@ -22,6 +22,8 @@ module Mugatu
           else
             ::Logger
           end
+
+        self.loglevel = loglevel
       end
 
       def instance
@@ -32,7 +34,7 @@ module Mugatu
         return if loglevel == :none || loglevel.nil?
 
         loglevel = loglevel.to_s.upcase
-        $logger.level = ::Logger.const_get(loglevel)
+        instance.level = ::Logger.const_get(loglevel)
       end
 
       def method_missing(*args)
