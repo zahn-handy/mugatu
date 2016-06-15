@@ -14,6 +14,10 @@ module Mugatu
           enum_for(:each)
         end
       end
+
+      def inspect
+        "#<#{self.class.name} #{to_a.inspect}>"
+      end
     end
   end
 end

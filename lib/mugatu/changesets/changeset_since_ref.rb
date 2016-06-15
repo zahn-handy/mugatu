@@ -16,6 +16,10 @@ module Mugatu
         end
       end
 
+      def inspect
+        "#<#{self.class.name} #{to_a.inspect}>"
+      end
+
       private
 
       def files
