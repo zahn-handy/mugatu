@@ -23,11 +23,21 @@ module Mugatu
             contexts = @additions_hash[problem.file]
 
             if contexts.nil?
+              Mugatu::Zipdisk.debug("No context for file `#{problem.file}` - assuming new file")
               true
             else
-              contexts.any? do |context|
-                context.lines.include?(problem.line)
+              problem_within_diff =
+                contexts.any? do |context|
+                  context.lines.include?(problem.line)
+                end
+
+              if problem_within_diff
+                Mugatu::Zipdisk.debug("Problem within diff: #{problem.inspect}")
+              else
+                Mugatu::Zipdisk.debug("Problem outside diff: #{problem.inspect}")
               end
+
+              problem_within_diff
             end
           end
 
