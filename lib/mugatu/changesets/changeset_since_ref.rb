@@ -19,7 +19,7 @@ module Mugatu
       private
 
       def files
-        committed_modified_files + staged_modified_files + unstaged_files
+        (committed_modified_files + staged_modified_files + unstaged_files).uniq
       end
 
       def committed_modified_files
