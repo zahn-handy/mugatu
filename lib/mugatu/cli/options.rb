@@ -38,7 +38,7 @@ module Mugatu
 
             formatters = @registry.formatters.keys
 
-            parser.on("-f [FORMAT]", "--format [FORMAT]", formatters, "Output format (#{formatters.join(", ")})") do |format|
+            parser.on("-f FORMAT", "--format FORMAT", formatters, "Output format (#{formatters.join(", ")})") do |format|
               @options[:format] = format
             end
 
