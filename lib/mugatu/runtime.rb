@@ -31,12 +31,6 @@ module Mugatu
       end
     end
 
-    def formatter_hash
-      formatters.map do |formatter|
-        [formatter.identifier, formatter]
-      end.to_h
-    end
-
     def formatters
       Mugatu::Formatters.constants.map do |formatter_class_name|
         Mugatu::Formatters.const_get(formatter_class_name)
@@ -51,6 +45,14 @@ module Mugatu
       else
         Mugatu::Formatters::Pretty
       end
+    end
+
+    private
+
+    def formatter_hash
+      formatters.map do |formatter|
+        [formatter.identifier, formatter]
+      end.to_h
     end
   end
 end
