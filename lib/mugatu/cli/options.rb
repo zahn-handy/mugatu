@@ -36,7 +36,7 @@ module Mugatu
               @options[:ref] = ref
             end
 
-            formatters = @registry.formatter_registry.keys
+            formatters = @registry.formatters.keys
 
             parser.on("-f [FORMAT]", "--format [FORMAT]", formatters, "Output format (#{formatters.join(", ")})") do |format|
               @options[:format] = format

@@ -1,10 +1,9 @@
 module Mugatu
   class Registry
     def initialize
-      @linters = {}
     end
 
-    def formatter_registry
+    def formatters
       formatter_list
         .map { |formatter| [formatter.identifier, formatter] }
         .to_h
@@ -14,6 +13,10 @@ module Mugatu
       linter_list
         .map { |linter| [linter.identifier, linter] }
         .to_h
+    end
+
+    def inspect
+      "#<#{self.class.name} linters=#{linters.keys.inspect} formatters=#{formatters.keys.inspect}>"
     end
 
     private
