@@ -10,6 +10,13 @@ module Mugatu
         @registry = registry
         @paths = paths
         @options = options
+
+        Mugatu::Zipdisk.info(@registry)
+        Mugatu::Zipdisk.info("Files to run on: #{@paths.inspect}")
+        Mugatu::Zipdisk.info("Options: #{@options.inspect}")
+        Mugatu::Zipdisk.info("Diff additions: #{runtime.additions.inspect}")
+        Mugatu::Zipdisk.info("Ref: #{runtime.ref}")
+        Mugatu::Zipdisk.info("Formatter: #{runtime.formatter.inspect}")
       end
 
       attr_reader :options
