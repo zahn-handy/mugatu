@@ -12,8 +12,9 @@ module Mugatu
         @options = options
 
         Mugatu::Zipdisk.info(@registry)
-        Mugatu::Zipdisk.info("Files to run on: #{@paths.inspect}")
+        Mugatu::Zipdisk.info("Files requested to run on: #{@paths.inspect}")
         Mugatu::Zipdisk.info("Options: #{@options.inspect}")
+        Mugatu::Zipdisk.info("Files to run on: #{runtime.files.to_a.inspect}")
         Mugatu::Zipdisk.info("Diff additions: #{runtime.additions.inspect}")
         Mugatu::Zipdisk.info("Ref: #{runtime.ref}")
         Mugatu::Zipdisk.info("Formatter: #{runtime.formatter.inspect}")
