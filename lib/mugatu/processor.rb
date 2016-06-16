@@ -32,22 +32,13 @@ module Mugatu
         Mugatu::Zipdisk.debug("Driver `#{@driver.name}` running with files: #{pertinent_files.inspect}")
 
         result = runner.call(pertinent_files)
-        result_hash = normalize_to_hash(result)
 
         parser = @driver::Parser.new
-        parser.call(result_hash)
+        parser.call(result)
       else
         Mugatu::Zipdisk.debug("Driver `#{@driver.name}` skipped due to no files")
 
         []
-      end
-    end
-
-    def normalize_to_hash(object)
-      if object.is_a?(String)
-        JSON.parse(object)
-      else
-        object
       end
     end
   end
