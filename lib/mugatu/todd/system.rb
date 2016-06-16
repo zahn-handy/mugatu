@@ -2,7 +2,8 @@ module Mugatu
   module Todd
     class System
       def self.call(*args)
-        Open3.capture2(*args).first
+        non_nil_args = args.compact
+        Open3.capture2(*non_nil_args).first
       end
     end
   end

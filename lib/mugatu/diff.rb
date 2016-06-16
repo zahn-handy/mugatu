@@ -6,7 +6,7 @@ module Mugatu
     end
 
     def compute
-      git_diff_command.run(base: @base, compare: @compare)
+      git_diff_command(base: @base, compare: @compare)
     end
 
     # This `git diff` command doesn't include files that haven't been comitted.
@@ -23,15 +23,16 @@ module Mugatu
     # Staged files have a sha1 hash (which effictively means that the file
     # contents are cached). If it were possible to `git diff` the working tree,
     # Git would have lots of trash blobs stored.
-    def git_diff_command
-      Cocaine::CommandLine.new(
+    def git_diff_command(base:, compare:)
+      Todd::System.call(
         "git",
-        "diff " \
-        "--unified=0 " \
-        "--color=always " \
-        "--find-renames " \
-        "--diff-algorithm=histogram " \
-        ":base :compare"
+        "diff",
+        "--unified=0",
+        "--color=always",
+        "--find-renames",
+        "--diff-algorithm=histogram",
+        base,
+        compare
       )
     end
   end
