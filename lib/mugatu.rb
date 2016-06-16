@@ -16,6 +16,7 @@ end
 
 require "mugatu/todd/hash_helpers"
 require "mugatu/todd/system"
+require "mugatu/zipdisk"
 require "mugatu/bootloader"
 require "mugatu/application"
 require "mugatu/runtime"
