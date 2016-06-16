@@ -16,18 +16,19 @@ module Mugatu
 
     class << self
       def setup(loglevel)
-        @logger_class =
-          if loglevel.nil? || loglevel == :none
-            NullLogger
-          else
-            ::Logger
-          end
-
         self.loglevel = loglevel
       end
 
+      def logger_class
+        if @loglevel.nil? || @loglevel == :none
+          NullLogger
+        else
+          ::Logger
+        end
+      end
+
       def instance
-        @logger ||= @logger_class.new(STDERR)
+        @logger ||= logger_class.new(STDERR)
       end
 
       def loglevel=(loglevel)

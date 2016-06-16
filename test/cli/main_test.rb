@@ -1,13 +1,11 @@
 require "test_helper"
 
-class CliCommandsLintTest < TestCase
+class CliMainTest < TestCase
   test "integration of `mugatu lint` command" do
     capture_io do
       Dir.chdir root_path do
-        Mugatu::Cli::Commands::Lint.new(
-          bootloader,
-          [],
-          {}
+        Mugatu::Cli::Main.new(
+          runtime
         )
       end
     end
@@ -21,6 +19,15 @@ class CliCommandsLintTest < TestCase
       registry: [
         Mugatu::Drivers::RubocopDriver
       ]
+    )
+  end
+
+  def runtime
+    Mugatu::Runtime.new(
+      bootloader: bootloader,
+      requested_files: [],
+      ref: "HEAD",
+      options: {}
     )
   end
 end
