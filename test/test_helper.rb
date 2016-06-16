@@ -7,6 +7,7 @@ require "pp"
 
 require "pry-byebug"
 require "minitest/autorun"
+require "cocaine"
 require_relative "support/declarative"
 require_relative "support/quick_dummy"
 

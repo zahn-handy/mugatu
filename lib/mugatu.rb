@@ -6,8 +6,6 @@ require "open3"
 
 # Ruby gems
 
-require "cocaine"
-
 begin
   # for development
   require "pry-byebug"
