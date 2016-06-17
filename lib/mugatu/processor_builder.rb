@@ -8,9 +8,10 @@ module Mugatu
     end
 
     def processors(files)
-      @linters_config.map do |name, value|
-        driver = @linters_registry[value["linter"].to_sym]
-        matcher = build_matcher(name, value)
+      @linters_config.map do |name, config|
+        linter_name = config["linter"].to_sym
+        driver = @linters_registry[linter_name]
+        matcher = build_matcher(name, config)
 
         Mugatu::Processor.new(
           driver: driver,

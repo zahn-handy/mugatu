@@ -4,7 +4,7 @@ class ProcessorBuilderTest < TestCase
   test "#processors generates processors appropriate to provided config" do
     show = Mugatu::ProcessorBuilder.new(
       linters_config:   fixture_config["linters"],
-      linters_registry: [],
+      linters_registry: {},
       root:             sandbox_path
     )
     processors = show.processors([])

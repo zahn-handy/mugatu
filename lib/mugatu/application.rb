@@ -7,8 +7,8 @@ module Mugatu
     def lint(all_files)
       processors = @processor_builder.processors(all_files)
 
-      processors.flat_map do |runway|
-        runway.each.to_a
+      processors.flat_map do |processor|
+        processor.each.to_a
       end
     end
   end

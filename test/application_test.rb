@@ -21,7 +21,7 @@ class ApplicationTest < TestCase
 
     Mugatu::ProcessorBuilder.new(
       linters_config:   fixture_config["linters"],
-      linters_registry: [Mugatu::Drivers::RubocopDriver],
+      linters_registry: { rubocop: Mugatu::Drivers::RubocopDriver },
       root:             fixtures_path
     )
   end

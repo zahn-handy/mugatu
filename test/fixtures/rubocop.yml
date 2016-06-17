@@ -2,8 +2,9 @@
 linters:
   ruby_linter:
     linter: rubocop
-    paths:
+    base:
       - "**/*.rb"
+      - "*.rb"
     excludes:
       - "config/**/*"
     includes:
