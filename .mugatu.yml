@@ -1,14 +1,16 @@
 ---
 git:
   base:
+    # This config is what to check against as the correct/perfect version. The
+    # current branch is diffed against this value.
     ref: origin/master
 linters:
-  ruby_linter:
-    linter: rubocop
-    base:
+  ruby_linter:      # Name doesn't matter, as long as it's unique
+    linter: rubocop # Name of the linter. Entire list is at `mugatu --help`
+    base:           # Basic search pattern for which files match
       - "**/*.rb"
-    excludes:
+    excludes:       # Excludes overrides base
       - "test/**/*"
-    includes:
+    includes:       # Includes overrides excludes
       - "test/test_helper.rb"
       - "test/support/**"

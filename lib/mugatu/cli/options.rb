@@ -28,7 +28,7 @@ module Mugatu
       def parser
         @parser ||=
           OptionParser.new do |parser|
-            parser.banner = "usage: #{$PROGRAM_NAME} [options] [files]"
+            parser.banner = "usage: #{parser.program_name} [options] [files]"
             parser.separator ""
             parser.separator "options:"
 
@@ -61,8 +61,13 @@ module Mugatu
             end
 
             parser.separator ""
-            parser.separator "in your project root, create a file called `.mugatu.yml`"
-            parser.separator "with these contents:"
+            parser.separator "available linters:"
+            @registry.linters.each do |name, klass|
+              parser.separator "    #{name} => #{klass.name}"
+            end
+
+            parser.separator ""
+            parser.separator "in your project root, create a file called `.mugatu.yml` with these contents:"
             parser.separator ""
             parser.separator "```"
 
