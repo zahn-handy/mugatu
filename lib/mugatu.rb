@@ -6,6 +6,8 @@ require "open3"
 
 # Ruby gems
 
+require "rainbow"
+
 begin
   # for development
   require "pry-byebug"

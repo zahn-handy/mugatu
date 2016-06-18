@@ -5,6 +5,17 @@ module Mugatu
         :pretty
       end
 
+      class ProblemPresenter
+        def initialize(problem)
+          @problem = problem
+        end
+
+        def to_s
+          "#{Rainbow(@problem.file).cyan}:#{@problem.line} #{@problem.linter} #{@problem.severity}\n" +
+          "#{@problem.name}: #{@problem.message}"
+        end
+      end
+
       def initialize(additions:, files:, start_time:)
         @problems = []
         @files = files
@@ -23,7 +34,7 @@ module Mugatu
       end
 
       def found(problem)
-        @problems.push(problem)
+        @problems.push(ProblemPresenter.new(problem))
       end
     end
   end

@@ -68,6 +68,7 @@ Gem::Specification.new do |spec|
     "TAKING CRAZY PILLS MMMMMMMM:::;;-:!>77MMMMMMMMMMMMMMMMMMMMMM\n"
 
   spec.add_runtime_dependency "rubocop", "~> 0.30"
+  spec.add_runtime_dependency "rainbow", ">= 1.99.1", "< 3.0"
 
   spec.add_development_dependency "bundler", "~> 1.11"
   spec.add_development_dependency "rake", "~> 10.0"
