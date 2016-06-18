@@ -45,15 +45,29 @@ module Mugatu
       end
 
       def committed_modified_files_cmd(ref:)
-        Todd::System.call("git", "diff", "--name-only", "--diff-filter=AM", ref)
+        Todd::System.call(
+          "git", "diff",
+          "--name-only",
+          "--diff-filter=AM",
+          ref
+        )
       end
 
       def staged_modified_files_cmd(ref:)
-        Todd::System.call("git", "diff-index", "--name-only", "--diff-filter=AM", ref)
+        Todd::System.call(
+          "git", "diff-index",
+          "--name-only",
+          "--diff-filter=AM",
+          ref
+        )
       end
 
       def unstaged_files_cmd
-        Todd::System.call("git", "ls-files", "--others", "--exclude-standard")
+        Todd::System.call(
+          "git", "ls-files",
+          "--others",
+          "--exclude-standard"
+        )
       end
     end
   end

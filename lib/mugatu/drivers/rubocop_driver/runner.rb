@@ -15,8 +15,7 @@ module Mugatu
             Dir.chdir(@root) do
               Todd::System.call(
                 "rubocop",
-                "--format",
-                "json",
+                "--format", "json",
                 *changed_files
               )
             end

@@ -25,8 +25,7 @@ module Mugatu
     # Git would have lots of trash blobs stored.
     def git_diff_command(base:, compare:)
       Todd::System.call(
-        "git",
-        "diff",
+        "git", "diff",
         "--unified=0",
         "--color=always",
         "--find-renames",
