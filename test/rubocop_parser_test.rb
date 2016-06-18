@@ -17,7 +17,7 @@ class RubocopParserTest < TestCase
 
   test "#parse_many_offenses" do
     offenses = extract("multiple")
-    parser  = Mugatu::Drivers::RubocopDriver::Parser.new
+    parser = Mugatu::Drivers::RubocopDriver::Parser.new
 
     problems = parser.parse_many_offenses("path/to/bad/file.rb", JSON.parse(offenses))
 

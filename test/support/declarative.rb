@@ -1,7 +1,7 @@
 module Support
   module Declarative
     def test(name, &block)
-      method_name = "test_#{name.gsub(%r{\s+}, "_")}"
+      method_name = "test_#{name.gsub(/\s+/, "_")}"
 
       method_block =
         if block_given?

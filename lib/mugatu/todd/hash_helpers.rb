@@ -25,7 +25,7 @@ module Mugatu
       end
 
       def self.symbolize_keys_shallow(hash)
-        hash.reduce({}) do |memo, (key, value)|
+        hash.each_with_object({}) do |(key, value), memo|
           new_key =
             if key.is_a?(String)
               key.to_sym
@@ -34,8 +34,6 @@ module Mugatu
             end
 
           memo[new_key] = symbolize_keys(value)
-
-          memo
         end
       end
     end

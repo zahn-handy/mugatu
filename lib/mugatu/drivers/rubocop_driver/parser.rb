@@ -7,8 +7,8 @@ module Mugatu
         end
 
         def call(errors)
-          errors["files"].flat_map do |errors|
-            parse_many_offenses(errors["path"], errors["offenses"])
+          errors["files"].flat_map do |errors_on_file|
+            parse_many_offenses(errors_on_file["path"], errors_on_file["offenses"])
           end
         end
 
@@ -29,7 +29,7 @@ module Mugatu
             severity: offense["severity"],
             file:     file,
             line:     offense["location"]["line"],
-            range:    (problem_start..problem_end),
+            range:    (problem_start..problem_end)
           )
         end
       end
