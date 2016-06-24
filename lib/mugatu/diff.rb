@@ -6,7 +6,9 @@ module Mugatu
     end
 
     def compute
-      git_diff_command(base: @base, compare: @compare)
+      result = git_diff_command(base: @base, compare: @compare)
+      Mugatu::Zipdisk.info(result)
+      result
     end
 
     # This `git diff` command doesn't include files that haven't been comitted.
