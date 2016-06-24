@@ -14,9 +14,30 @@ module Mugatu
       end
     end
 
-    class << self
-      def setup(loglevel)
-        self.loglevel = loglevel
+    class Internal
+      def initialize(loglevel)
+        @loglevel = loglevel
+      end
+
+      def logger
+        if @logger
+          return @logger
+        end
+
+        @logger = logger_class.new(STDERR)
+        @logger.level = loglevel_const
+        @logger
+      end
+
+      private
+
+      def loglevel_const
+        if @loglevel == :none || @loglevel.nil?
+          return ::Logger::FATAL
+        end
+
+        @loglevel.to_s.upcase
+        ::Logger.const_get(@loglevel.to_s.upcase)
       end
 
       def logger_class
@@ -26,24 +47,33 @@ module Mugatu
           ::Logger
         end
       end
+    end
 
-      def instance
-        @logger ||= logger_class.new(STDERR)
+    class << self
+      def setup(loglevel)
+        @instance = Internal.new(loglevel)
       end
 
-      def loglevel=(loglevel)
-        return if loglevel == :none || loglevel.nil?
+      def logger
+        if @logger
+          return @logger
+        end
 
-        loglevel = loglevel.to_s.upcase
-        instance.level = ::Logger.const_get(loglevel)
+        if @instance
+          @logger = @instance.logger
+          return @logger
+        end
+
+        @default_instance ||= Internal.new(nil)
+        @default_instance.logger
       end
 
       def method_missing(*args)
-        instance.send(*args)
+        logger.send(*args)
       end
 
       def respond_to_missing?(method_name, include_private = false)
-        instance.respond_to?(method_name, include_private) || super
+        logger.respond_to?(method_name, include_private) || super
       end
     end
   end
