@@ -16,7 +16,7 @@ class SupportTest < TestCase
     git_commit_all
 
     _out, err = capture_io { git_status }
-    assert_match(/nothing to commit, working directory clean/, err)
+    assert_match(/nothing to commit, working (?:directory|tree) clean/, err)
 
     _out, err = capture_io { git_log }
     assert_match(/crazy commit message/, err)
