@@ -26,13 +26,20 @@ module Mugatu
     # contents are cached). If it were possible to `git diff` the working tree,
     # Git would have lots of trash blobs stored.
     def git_diff_command(base:, compare:)
+      branch_point =
+        Todd::System.call(
+          "git", "merge-base",
+          base,
+          compare
+        )
+
       Todd::System.call(
         "git", "diff",
         "--unified=0",
         "--color=always",
         "--find-renames",
         "--diff-algorithm=histogram",
-        base,
+        branch_point.strip,
         compare
       )
     end
