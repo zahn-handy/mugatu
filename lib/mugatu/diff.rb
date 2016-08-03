@@ -2,7 +2,7 @@ module Mugatu
   class Diff
     def initialize(base:, compare:)
       @base = base
-      @compute = compare
+      @compare = compare
     end
 
     def compute
