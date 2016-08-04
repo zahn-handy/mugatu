@@ -16,8 +16,6 @@ module Mugatu
       end
 
       def call
-        p @runtime.options
-        # p @runtime.options
         p @bootloader.config
         result = pipe({},
           Mugatu::Pipes::Files.new([], @bootloader.root_path),
