@@ -9,9 +9,7 @@ module Mugatu
       def call(input)
         result = git_diff_command(base: @base, compare: @compare)
         Mugatu::Zipdisk.info(result)
-        input[:raw_diff] = result
-
-        input
+        result
       end
 
       private

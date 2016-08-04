@@ -1,11 +1,9 @@
 module Mugatu
   module Pipes
     class DiffParser
-      def call(input)
-        parser = Mugatu::DiffParser.new(input[:raw_diff])
-        input[:additions] = parser.additions
-
-        input
+      def call(raw_diff)
+        parser = Mugatu::DiffParser.new(raw_diff)
+        parser.additions
       end
     end
   end
