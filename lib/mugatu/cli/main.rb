@@ -17,8 +17,10 @@ module Mugatu
 
       def call
         p @runtime.options
+        # p @runtime.options
         p @bootloader.config
-        result = pipe(
+        result = pipe({},
+          Mugatu::Pipes::Files.new([], @bootloader.root_path),
           Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
           Mugatu::Pipes::DiffParser.new,
         )
@@ -54,8 +56,8 @@ module Mugatu
         # @formatter.done
       end
 
-      def pipe(*blockishes)
-        blockishes.flatten.each_with_object({}) do |blockish, memo|
+      def pipe(initial, *blockishes)
+        blockishes.flatten.reduce(initial) do |memo, blockish|
           blockish.call(memo)
         end
       end
