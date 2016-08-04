@@ -21,6 +21,7 @@ module Mugatu
           Mugatu::Pipes::Files.new([], @bootloader.root_path),
           Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
           Mugatu::Pipes::DiffParser.new,
+          Mugatu::Pipes::Linter.new(@application)
         )
 
         p result
