@@ -8,6 +8,7 @@ module Mugatu
     end
 
     attr_reader :bootloader
+    attr_reader :requested_files
 
     def additions
       diff = Mugatu::Diff.new(base: ref, compare: "HEAD").compute

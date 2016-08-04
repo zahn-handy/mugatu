@@ -16,15 +16,16 @@ module Mugatu
       end
 
       def call
-        p @bootloader.config
-        result = pipe({},
-          Mugatu::Pipes::Files.new([], @bootloader.root_path),
-          Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
-          Mugatu::Pipes::DiffParser.new,
-          Mugatu::Pipes::Linter.new(@application)
+        pp @runtime
+        pp @bootloader.config
+        result = pipe(
+          files: Mugatu::Pipes::Files.new(@runtime.requested_files, @bootloader.root_path),
+          diff: Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
+          additions: Mugatu::Pipes::DiffParser.new,
+          problems: Mugatu::Pipes::Linter.new(@application)
         )
 
-        p result
+        pp result
         # problems = @application.lint(@runtime.files)
         #
         # printable_problems =
@@ -55,9 +56,9 @@ module Mugatu
         # @formatter.done
       end
 
-      def pipe(initial, *blockishes)
-        blockishes.flatten.reduce(initial) do |memo, blockish|
-          blockish.call(memo)
+      def pipe(blockishes)
+        blockishes.each_with_object({}) do |(key, blockish), memo|
+          memo[key] = blockish.call(memo)
         end
       end
     end

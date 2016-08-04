@@ -5,13 +5,8 @@ module Mugatu
         @application = application
       end
 
-      def call(additions)
-        # @application.lint
-
-        {
-          additions: additions,
-          problems: []
-        }
+      def call(files:, **)
+        @application.lint(files)
       end
     end
   end

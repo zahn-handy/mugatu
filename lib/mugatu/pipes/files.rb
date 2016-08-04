@@ -15,7 +15,7 @@ module Mugatu
           )
 
         if @requested_files.empty?
-          Mugatu::Changesets::ChangesetSinceRef.new(@root_path, ref)
+          Mugatu::Changesets::ChangesetSinceRef.new(@root_path, ref.strip)
         else
           Mugatu::Changesets::NullChangeset.new(files: @requested_files)
         end
