@@ -22,7 +22,8 @@ module Mugatu
           files: Mugatu::Pipes::Files.new(@runtime.requested_files, @bootloader.root_path),
           diff: Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
           additions: Mugatu::Pipes::DiffParser.new,
-          problems: Mugatu::Pipes::Linter.new(@application)
+          problems: Mugatu::Pipes::Linter.new(@application),
+          personal_problems: Mugatu::Pipes::Filter.new
         )
 
         pp result
