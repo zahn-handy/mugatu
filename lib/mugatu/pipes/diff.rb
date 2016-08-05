@@ -6,7 +6,7 @@ module Mugatu
         @compare = compare
       end
 
-      def call(input)
+      def call(*)
         result = git_diff_command(base: @base, compare: @compare)
         Mugatu::Zipdisk.info(result)
         result
