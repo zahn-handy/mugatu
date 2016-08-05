@@ -6,16 +6,9 @@ module Mugatu
         @root_path = root_path
       end
 
-      def call(*)
-        ref =
-          Todd::System.call(
-            "git", "merge-base",
-            "origin/master",
-            "HEAD"
-          )
-
+      def call(branch_point:, **)
         if @requested_files.empty?
-          Mugatu::Changesets::ChangesetSinceRef.new(@root_path, ref.strip)
+          Mugatu::Changesets::ChangesetSinceRef.new(@root_path, branch_point)
         else
           Mugatu::Changesets::NullChangeset.new(files: @requested_files)
         end

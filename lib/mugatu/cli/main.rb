@@ -19,6 +19,7 @@ module Mugatu
         pp @runtime
         pp @bootloader.config
         result = pipe(
+          branch_point: Mugatu::Pipes::BranchPoint.new,
           files: Mugatu::Pipes::Files.new(@runtime.requested_files, @bootloader.root_path),
           diff: Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
           additions: Mugatu::Pipes::DiffParser.new,

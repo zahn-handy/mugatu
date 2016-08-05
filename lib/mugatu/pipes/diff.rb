@@ -6,8 +6,8 @@ module Mugatu
         @compare = compare
       end
 
-      def call(*)
-        result = git_diff_command(base: @base, compare: @compare)
+      def call(branch_point:, **)
+        result = git_diff_command(compare: @compare, branch_point: branch_point)
         Mugatu::Zipdisk.info(result)
         result
       end
@@ -28,21 +28,14 @@ module Mugatu
       # Staged files have a sha1 hash (which effictively means that the file
       # contents are cached). If it were possible to `git diff` the working tree,
       # Git would have lots of trash blobs stored.
-      def git_diff_command(base:, compare:)
-        branch_point =
-          Todd::System.call(
-            "git", "merge-base",
-            base,
-            compare
-          )
-
+      def git_diff_command(compare:, branch_point:)
         Todd::System.call(
           "git", "diff",
           "--unified=0",
           "--color=always",
           "--find-renames",
           "--diff-algorithm=histogram",
-          branch_point.strip,
+          branch_point,
           compare
         )
       end
