@@ -1,11 +1,10 @@
 module Mugatu
   module Cli
     class Main
-      def initialize(runtime)
+      def initialize(runtime, config)
         start_time = Time.now
-        @runtime = runtime
-        @bootloader = runtime.bootloader
-        @application = @bootloader.application
+        @config = config
+        @application = runtime.bootloader.application
 
         @formatter = runtime.formatter.new(
           files: runtime.files,
@@ -14,12 +13,10 @@ module Mugatu
       end
 
       def call
-        pp @runtime
-        pp @bootloader.config
         result = pipe(
           branch_point: Mugatu::Pipes::BranchPoint.new,
-          files: Mugatu::Pipes::Files.new(@runtime.requested_files, @bootloader.root_path),
-          diff: Mugatu::Pipes::Diff.new(base: @bootloader.config["git"]["base"]["ref"], compare: "HEAD"),
+          files: Mugatu::Pipes::Files.new(@config.requested_files, @config.root_path),
+          diff: Mugatu::Pipes::Diff.new(base: @config.base_ref, compare: @config.current_ref),
           additions: Mugatu::Pipes::DiffParser.new,
           problems: Mugatu::Pipes::Linter.new(@application),
           personal_problems: Mugatu::Pipes::Filter.new
