@@ -28,34 +28,10 @@ module Mugatu
         )
 
         pp result
-        # problems = @application.lint(@runtime.files)
-        #
-        # printable_problems =
-        #   problems.select do |problem|
-        #     contexts = @additions_hash[problem.file]
-        #
-        #     if contexts.nil?
-        #       Mugatu::Zipdisk.debug("No context for file `#{problem.file}` - assuming new file")
-        #       true
-        #     else
-        #       problem_within_diff =
-        #         contexts.any? do |context|
-        #           context.lines.include?(problem.line)
-        #         end
-        #
-        #       if problem_within_diff
-        #         Mugatu::Zipdisk.debug("Problem within diff: #{problem.inspect}")
-        #       else
-        #         Mugatu::Zipdisk.debug("Problem outside diff: #{problem.inspect}")
-        #       end
-        #
-        #       problem_within_diff
-        #     end
-        #   end
-        #
-        # @formatter.start
-        # printable_problems.each { |p| @formatter.found(p) }
-        # @formatter.done
+
+        @formatter.start
+        result[:personal_problems].each { |p| @formatter.found(p) }
+        @formatter.done
       end
 
       def pipe(blockishes)
