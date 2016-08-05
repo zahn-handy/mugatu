@@ -6,10 +6,8 @@ module Mugatu
         @runtime = runtime
         @bootloader = runtime.bootloader
         @application = @bootloader.application
-        @additions_hash = runtime.additions
 
         @formatter = runtime.formatter.new(
-          additions: @additions_hash,
           files: runtime.files,
           start_time: start_time
         )

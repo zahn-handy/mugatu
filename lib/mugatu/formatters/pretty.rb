@@ -16,7 +16,7 @@ module Mugatu
         end
       end
 
-      def initialize(additions:, files:, start_time:)
+      def initialize(files:, start_time:)
         @problems = []
         @files = files
       end
