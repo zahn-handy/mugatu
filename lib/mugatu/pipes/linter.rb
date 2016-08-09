@@ -1,12 +1,12 @@
 module Mugatu
   module Pipes
     class Linter
-      def initialize(application)
-        @application = application
-      end
+      def call(processor_builder:, files:, **)
+        processors = processor_builder.processors(files)
 
-      def call(files:, **)
-        @application.lint(files)
+        processors.flat_map do |processor|
+          processor.each.to_a
+        end
       end
     end
   end

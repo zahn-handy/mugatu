@@ -2,26 +2,14 @@ module Mugatu
   module Cli
     class Options
       def initialize(argv, registry)
-        @options = {}
-        @argv = argv
-        @ran = false
         @registry = registry
+        @argv = argv
+        @options = {}
+        @files = parser.parse(@argv)
       end
 
-      def options
-        return @options if @ran
-
-        parser.parse!(@argv)
-        @ran = true
-
-        @options
-      end
-
-      def files
-        options
-
-        @argv
-      end
+      attr_reader :options
+      attr_reader :files
 
       private
 

@@ -20,5 +20,9 @@ module Mugatu
     def current_ref
       "HEAD"
     end
+
+    def linter_config
+      @dotfile_contents["linters"]
+    end
   end
 end

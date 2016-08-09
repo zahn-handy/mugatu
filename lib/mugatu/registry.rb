@@ -1,8 +1,5 @@
 module Mugatu
   class Registry
-    def initialize
-    end
-
     def formatters
       formatter_list
         .map { |formatter| [formatter.identifier, formatter] }

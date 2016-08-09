@@ -31,7 +31,7 @@ module Mugatu
           dotfile_contents: bootloader.config
         )
 
-        main = Main.new(r, config)
+        main = Main.new(r, config, @registry)
         main.call
       end
 

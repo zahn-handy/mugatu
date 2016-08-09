@@ -10,10 +10,6 @@ module Mugatu
     attr_reader :root_path
     attr_reader :registry, :config_path, :config
 
-    def application
-      Mugatu::Application.new(processor_builder: processor_builder)
-    end
-
     def processor_builder
       Mugatu::ProcessorBuilder.new(
         linters_config: @config["linters"],
