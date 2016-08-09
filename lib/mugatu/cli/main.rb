@@ -1,13 +1,13 @@
 module Mugatu
   module Cli
     class Main
-      def initialize(runtime, config, registry)
+      def initialize(formatter, config, registry)
         start_time = Time.now
         @config = config
         @registry = registry
 
-        @formatter = runtime.formatter.new(
-          files: runtime.files,
+        @formatter = formatter.new(
+          files: [],
           start_time: start_time
         )
       end

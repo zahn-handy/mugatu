@@ -19,8 +19,6 @@ end
 require "mugatu/todd/hash_helpers"
 require "mugatu/todd/system"
 require "mugatu/zipdisk"
-require "mugatu/bootloader"
-require "mugatu/runtime"
 require "mugatu/changesets/null_changeset"
 require "mugatu/changesets/changeset_since_ref"
 require "mugatu/formatters/pretty"
