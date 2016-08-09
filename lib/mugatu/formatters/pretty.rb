@@ -16,21 +16,20 @@ module Mugatu
         end
       end
 
-      def initialize(files:, start_time:)
+      def initialize(start_time:)
         @problems = []
-        @files = files
       end
 
       def start
       end
 
-      def done
+      def done(files)
         if @problems.any?
           puts @problems.map(&:to_s).join("\n\n")
           puts
         end
 
-        puts "Searched #{@files.count} files. Found #{@problems.count} problems."
+        puts "Searched #{files.count} files. Found #{@problems.count} problems."
       end
 
       def found(problem)

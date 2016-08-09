@@ -7,7 +7,6 @@ module Mugatu
         @registry = registry
 
         @formatter = formatter.new(
-          files: [],
           start_time: start_time
         )
       end
@@ -23,11 +22,9 @@ module Mugatu
           personal_problems: Mugatu::Pipes::Filter.new
         )
 
-        pp result
-
         @formatter.start
         result[:personal_problems].each { |p| @formatter.found(p) }
-        @formatter.done
+        @formatter.done(result[:files])
       end
 
       def pipe(blockishes)

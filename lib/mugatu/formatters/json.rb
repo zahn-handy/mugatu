@@ -27,16 +27,15 @@ module Mugatu
         end
       end
 
-      def initialize(files:, start_time:)
+      def initialize(start_time:)
         @problems = []
-        @files = files
         @start_time = start_time
       end
 
       def start
       end
 
-      def done
+      def done(files)
         end_time = Time.now
         problems = @problems.map { |problem| ProblemPresenter.new(problem) }
 
@@ -44,7 +43,7 @@ module Mugatu
           summary: {
             elapsed_time: end_time - @start_time
           },
-          searched_files: @files.each.to_a,
+          searched_files: files.each.to_a,
           problems: problems
         }
 
