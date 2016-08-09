@@ -18,10 +18,10 @@ module Mugatu
           root_path: current_working_directory,
           parsed_argv: @options.options,
           foreign_argv: @options.files,
-          dotfile_contents: YAML.load_file(File.join(current_working_directory, ".mugatu.yml"))
+          registry: @registry
         )
 
-        main = Main.new(formatter, config, @registry)
+        main = Main.new(config, @registry)
         main.call
       end
 
@@ -29,16 +29,6 @@ module Mugatu
 
       def current_working_directory
         File.expand_path("")
-      end
-
-      def formatter
-        found_formatter = @registry.formatters[@options.options[:format]]
-
-        if found_formatter
-          found_formatter
-        else
-          Mugatu::Formatters::Pretty
-        end
       end
     end
   end
