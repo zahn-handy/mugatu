@@ -30,7 +30,7 @@ module Mugatu
     def match?(patterns, subject)
       safe_patterns = patterns || []
       safe_patterns.each do |pattern|
-        if File.fnmatch?(pattern, subject)
+        if File.fnmatch?(pattern, subject, File::FNM_PATHNAME)
           return true
         end
       end

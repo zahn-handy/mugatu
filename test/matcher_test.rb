@@ -22,8 +22,6 @@ class MatcherTest < TestCase
   end
 
   test "#belongs? works like how I want it to" do
-    skip "#belongs? doesn't work right now, but it's not my priority at the moment"
-
     patterns = {
       name: :eslint,
       base: %w(**/*.js),
