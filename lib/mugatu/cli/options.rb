@@ -39,6 +39,10 @@ module Mugatu
               @options[:loglevel] = loglevel
             end
 
+            parser.on("--diff") do
+              exit
+            end
+
             parser.on("-h", "--help", "Show this message") do
               puts parser
               exit
